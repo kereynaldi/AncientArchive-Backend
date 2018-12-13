@@ -27,7 +27,7 @@
               <div class="icon">
                 <i class="fa fa-briefcase"></i>
               </div>
-              <a href="../document-approval/document-approval.html" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="{{ url('/document_approval') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -42,7 +42,7 @@
               <div class="icon">
                 <i class="fa fa-thumbs-up"></i>
               </div>
-              <a href="../document-approval/document-approval.html" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="{{ url('/document_approval') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -57,7 +57,7 @@
               <div class="icon">
                 <i class="fa fa-book"></i>
               </div>
-              <a href="../document-approval/document-approval.html" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="{{ url('/document_approval') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -72,7 +72,7 @@
               <div class="icon">
                 <i class="fa fa-thumbs-down"></i>
               </div>
-              <a href="../document-approval/document-approval.html" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="{{ url('/document_approval') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -147,29 +147,29 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a href="pages/examples/invoice.html">DA0005</a></td>
+                    <td><a href="{{ url('/document_detail') }}">DA0005</a></td>
                     <td>Permohonan Pengajuan Ruang Seminar</td>
                     <td>12 December 2018</td>
                     <td><span class="label label-warning">Review</span></td>
                   <tr>
-                    <td><a href="pages/examples/invoice.html">DA0004</a></td>
+                    <td><a href="{{ url('/document_detail') }}">DA0004</a></td>
                     <td>Permohonan Pengajuan Dana PMW</td>
                     <td>12 December 2018</td>
                     <td><span class="label label-success">Approved</span></td>
                   </tr>
                   <tr>
-                    <td><a href="pages/examples/invoice.html">DA0003</a></td>
+                    <td><a href="{{ url('/document_detail') }}">DA0003</a></td>
                     <td>Pengajuan Permintaan Kenaikan Pangkat</td>
                     <td>02 December 2018</td>
                     <td><span class="label label-danger">Declined</span></td>
                   </tr>
                   <tr>
-                    <td><a href="pages/examples/invoice.html">DA0002</a></td>
+                    <td><a href="{{ url('/document_detail') }}">DA0002</a></td>
                     <td>Permohonan Pengajuan Kegiatan Workshop Bilibili</td>
                     <td>23 November 2018</td>
                     <td><span class="label label-success">Approved</span></td>
                   <tr>
-                    <td><a href="pages/examples/invoice.html">DA0001</a></td>
+                    <td><a href="{{ url('/document_detail') }}">DA0001</a></td>
                     <td>Permohonan Pengajuan Cuti 3 Hari</td>
                     <td>29 October 2018</td>
                     <td><span class="label label-warning">Review</span></td>
@@ -181,7 +181,7 @@
           </div>
           <!-- /.box-body -->
           <div class="box-footer clearfix">
-            <a href="../document-approval/document-approval.html" class="btn btn-sm btn-info btn-flat center-block">View All Document</a>
+            <a href="{{ url('/document_approval') }}" class="btn btn-sm btn-info btn-flat center-block">View All Document</a>
           </div>
           <!-- /.box-footer -->
         </div>
@@ -205,7 +205,7 @@
             <ul class="products-list product-list-in-box">
               <li class="item">
                 <div class="product-img">
-                  <img src="../../dist/img/kevin.jpg" class="img-circle" alt="Product Image">
+                  <img src="{{ asset('beranda/dist/img/kevin.jpg') }}" class="img-circle" alt="Product Image">
                 </div>
                 <div class="product-info">
                   <a href="javascript:void(0)" class="product-title">Permohonan Pengajuan Ruang Seminar
@@ -218,7 +218,7 @@
               <!-- /.item -->
               <li class="item">
                 <div class="product-img">
-                  <img src="../../dist/img/Rakish.jpg" class="img-circle" alt="Product Image">
+                  <img src="{{ asset('beranda/dist/img/Rakish.jpg') }}" class="img-circle" alt="Product Image">
                 </div>
                 <div class="product-info">
                   <a href="javascript:void(0)" class="product-title">Permohonan Pengajuan Dana PMW
@@ -231,7 +231,7 @@
               <!-- /.item -->
               <li class="item">
                 <div class="product-img">
-                  <img src="../../dist/img/Rakish.jpg" class="img-circle" alt="Product Image">
+                  <img src="{{ asset('beranda/dist/img/Rakish.jpg') }}" class="img-circle" alt="Product Image">
                 </div>
                 <div class="product-info">
                   <a href="javascript:void(0)" class="product-title">Pengajuan Permintaan Kenaikan Pangkat
@@ -244,7 +244,7 @@
               <!-- /.item -->
               <li class="item">
                 <div class="product-img">
-                  <img src="../../dist/img/kevin.jpg" class="img-circle" alt="Product Image">
+                  <img src="{{ asset('beranda/dist/img/kevin.jpg') }}" class="img-circle" alt="Product Image">
                 </div>
                 <div class="product-info">
                   <a href="javascript:void(0)" class="product-title">Permohonan Pengajuan Cuti 3 Hari
@@ -259,7 +259,7 @@
           </div>
           <!-- /.box-body -->
           <div class="box-footer clearfix">
-            <a href="../recent-activity/recent-activity.html" class="btn btn-sm btn-info btn-flat center-block">View All Recent Activity</a>
+            <a href="{{ url('/recent_activity') }}" class="btn btn-sm btn-info btn-flat center-block">View All Recent Activity</a>
           </div>
           <!-- /.box-footer -->
         </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dashboard Page | Ancient Archive</title>
+  <title>Ancient Archive</title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -20,6 +20,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('beranda/dist/css/AdminLTE.min.css') }}">
 
+  <!-- Custom CSS Upload -->
+  <link rel="stylesheet" href="{{ asset('beranda/css/upload-file.css')}}" />
+
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{ asset('beranda/dist/css/skins/_all-skins.min.css') }}">
@@ -27,7 +30,11 @@
   <!-- Website Theme -->
   <meta id="theme-color" name="theme-color" content="#4AB3B6">
   <link rel="stylesheet" href="{{ asset('beranda/css/dashboard.css') }}" />
-
+  <link rel="stylesheet" href="{{ asset('beranda/css/document-approval.css') }}" />
+  <link rel="stylesheet" href="{{ asset('beranda/document-archieved.css') }}" />
+  <link rel="stylesheet" href="{{ asset('beranda/recent-activity.css') }}" />
+  <link rel="stylesheet" href="{{ ('beranda/profile.css') }}" />
+  <link rel="stylesheet" href="{{ ('beranda/document-detail.css') }}" />
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -53,7 +60,7 @@
     <header class="main-header">
 
       <!-- Logo -->
-      <a href="#" class="logo">
+      <a href="{{ url('/dashboard') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b>A</span>
         <!-- logo for regular state and mobile devices -->
@@ -152,7 +159,7 @@
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    <a href="{{ url('/profile') }}" class="btn btn-default btn-flat">Profile</a>
                   </div>
                   <div class="pull-right">
                     <a href="#" class="btn btn-default btn-flat">Sign out</a>
@@ -204,31 +211,31 @@
 
           <li class="header">MAIN MENU</li>
           <li>
-            <a href="#">
+            <a href="{{ url('/dashboard') }}">
               <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
           </li>
 
           <li>
-            <a href="#">
+            <a href="{{ url('/upload') }}">
               <i class="fa fa-upload"></i> <span>Upload Document</span>
             </a>
           </li>
 
           <li>
-            <a href="#">
+            <a href="{{ url('/document_approval') }}">
               <i class="fa fa-file-text"></i> <span>Document Approval</span>
             </a>
           </li>
 
           <li>
-            <a href="#">
-              <i class="fa fa-folder"></i> <span>Archieved Document</span>
+            <a href="{{ url('/document_arhived') }}">
+              <i class="fa fa-folder"></i> <span>Archived Document</span>
             </a>
           </li>
 
           <li>
-            <a href="#">
+            <a href="{{ url('/recent_activity') }}">
               <i class="fa fa-exchange"></i> <span>Recent Activity</span>
             </a>
           </li>
@@ -276,6 +283,10 @@
   <!-- FastClick -->
   <script src="{{ asset('beranda/bower_components/fastclick/lib/fastclick.js') }}"></script>
 
+  <!-- DataTables -->
+  <script src="{{ asset('beranda/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('beranda/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+
   <!-- AdminLTE App -->
   <script src="{{ asset('beranda/dist/js/adminlte.min.js') }}"></script>
 
@@ -303,6 +314,16 @@
       });
   </script>
 
+  <!-- page script Document-approval-->
+  <script>
+    $(function () {
+      $('#example1').DataTable()
+      $('#example2').DataTable()
+      $('#example3').DataTable()
+      $('#example4').DataTable()
+    })
+  </script>
+  <script src="{{ asset('beranda/upload-file.js') }}"></script>
   <!-- Script End -->
 
 </body>
