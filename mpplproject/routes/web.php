@@ -19,7 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/login', 'AuthController@getLogin');
+Route::get('/register', 'AuthController@getRegister');
 Route::post('/dashboard', 'AuthController@PostLogin')->name('loginn');
+Route::post('/register', 'AuthController@PostRegister')->name('register');
+Route::get('/welcome', 'AuthController@Logout')->name('logout');
 Route::get('/upload', 'DashController@getUpload');
 Route::get('/dashboard', 'DashController@index');
 Route::get('/document_approval', 'DashController@getApproval');

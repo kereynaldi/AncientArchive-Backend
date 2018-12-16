@@ -24,6 +24,7 @@
         <div class="container-head">
             <h1>Ancient Archive Project</h1>
             <a class="login" href="{{ url('/login') }}">Login</a>
+            <a class="login" href="{{ url('/register') }}">Register</a>
         </div>
 
         <div class="container-body">

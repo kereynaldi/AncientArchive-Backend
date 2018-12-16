@@ -33,19 +33,26 @@
                     <h2>Login</h2>
                 </div>
 
-                <form action="{{ route('loginn') }}" method="POST">
-                  @csrf
-                    <div>
+                <form method="POST" action="{{ route('register') }}">
+                  {{ csrf_field() }}
+                  <div>
+                      <label for="NIP" ><b>NIP</b></label>
+                      <br>
+                      <input name="NIP" type="text">
+
+                      <label for="name" ><b>Nama Lengkap</b></label>
+                      <br>
+                      <input name="name" type="text">
+
                         <label for="email" ><b>Email</b></label>
                         <br>
                         <input name="email" type="text">
-                    </div>
-                    <div>
-                        <label for="passoword" ><b>Password</b></label>
+
+                        <label for="password" ><b>Password</b></label>
                         <br>
                         <input name="password" type="password">
                     </div>
-                    <button class="button">Login</button>
+                    <button class="button">Register</button>
                 </form>
 
             </div>
