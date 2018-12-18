@@ -17,21 +17,26 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
+//REGISTER ROUTES - stricted access
 Route::get('/register', 'AuthController@getRegister');
-Route::post('/dashboard', 'AuthController@PostLogin')->name('loginn');
+Route::post('/register', 'AuthController@PostRegister')->name('register');
+
+//LOGIN LOGOUT ROUTES
+Route::get('/login', 'LoginController@index'); //login index
+Route::post('/login/checklogin', 'LoginController@checklogin'); //check login func
+Route::get('/successlogin', 'LoginController@successlogin'); //session start func
+Route::get('login/logout', 'LoginController@logout')->name('logout'); //logout
+
+//DASHCONTROLLER ROUTES
+//semua ini bisa diakses jika session('key') sudah 1
+Route::get('/dashboard', 'DashController@index')->name('dashboard');
+Route::get('/document_approval', 'DashController@getApproval')->name('document_approval');
+Route::get('/document_archived', 'DashController@getArchived')->name('document_archived');
+Route::get('/recent_activity', 'DashController@getActivity')->name('recent_activity');
+Route::get('/document_detail', 'DashController@getDetail')->name('document_detail');
+
+//ROUTE PROFIL
 Route::patch('/profile', 'UserController@editProfil')->name('editprofile');
 
-Route::get('/dashboard', 'DashController@index')->name('dashboard');
-Route::get('/login', 'AuthController@getLogin')->name('login');
-
-Route::post('/register', 'AuthController@PostRegister')->name('register');
-Route::get('/welcome', 'AuthController@Logout')->name('logout');
+//ROUTE UPLOAD
 Route::get('/upload', 'DashController@getUpload');
-
-Route::get('/document_approval', 'DashController@getApproval');
-Route::get('/document_arhived', 'DashController@getArhived');
-Route::get('/recent_activity', 'DashController@getActivity');
-Route::get('/profile', 'UserController@getProfile')->name('profile');
-Route::get('/document_detail', 'DashController@getDetail');

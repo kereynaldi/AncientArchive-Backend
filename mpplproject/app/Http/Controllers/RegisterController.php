@@ -38,25 +38,3 @@ class AuthController extends Controller
       //redirect home
         return redirect() -> back();
     }
-
-    public function PostLogin(Request $request)
-    {
-      $user = Auth::User();
-
-      //authenticating users
-      if (!Auth::attempt((['email' => $request->email, 'password' => $request->password]))) {
-        return redirect()->route('login');
-      }
-      return redirect()->route('dashboard');
-
-    }
-
-    public function Logout(Request $request)
-    {
-      //logout
-      $request->session()->flush();
-      Auth::logout();
-
-      return view('welcome');
-    }
-}
