@@ -96,10 +96,10 @@
                     <li><!-- start message -->
                       <a href="#">
                         <div class="pull-left">
-                          <img src="{{ asset('beranda/dist/img/kevin.jpg') }}" class="img-circle" alt="User Image">
+                          <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
                         </div>
                         <h4>
-                          Kevin Reynaldi
+                          {{Auth::User()->name}}
                           <small><i class="fa fa-clock-o"></i> 5 mins</small>
                         </h4>
                         <p>Please Review your event background</p>
