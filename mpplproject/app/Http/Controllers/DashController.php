@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class DashController extends Controller
 {
@@ -32,10 +33,7 @@ class DashController extends Controller
         return view('recent-activity');
     }
 
-    public function getProfile()
-    {
-        return view('profile');
-    }
+
 
     public function getDetail()
     {

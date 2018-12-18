@@ -67,19 +67,24 @@
                       <br>
 
                       <div class="form-group">
-                        <h4>Sender Description Form</h4>
-                        <label class="pull-left">Full Name</label>
-                        <input type="text" class="form-control" placeholder="Insert Your Full Name Here ...">
+                        <h4>Mail Description Form</h4>
+                        <label class="pull-left">Subject</label>
+                        <input type="text" name="subject" class="form-control" placeholder="Insert Your Full Name Here ...">
                       </div>
 
                       <div class="form-group">
-                        <label class="pull-left">Phone Number</label>
-                        <input type="number" class="form-control" placeholder="Insert your Phone Number Here ...">
+                        <label class="pull-left">From</label>
+                        <input type="number" name="from" class="form-control" placeholder="Insert your Phone Number Here ...">
                       </div>
 
                       <div class="form-group">
-                        <label class="pull-left">Email</label>
-                        <input type="email" class="form-control" placeholder="Insert your Email Here ...">
+                        <label class="pull-left">To</label>
+                        <input type="text" name="to" class="form-control" placeholder="Insert your Email Here ...">
+                      </div>
+
+                      <div class="form-group">
+                        <label class="pull-left">Document Description</label>
+                        <textarea class="form-control" name="deskripsisurat" rows="5" placeholder="Insert Your Document Description Here ..."></textarea>
                       </div>
 
                       <br>
@@ -87,25 +92,20 @@
                       <div class="form-group">
                         <h4>Receiver Description Form</h4>
                         <label class="pull-left">Full Name</label>
-                        <input type="text" class="form-control" placeholder="Insert Your Full Name Here ...">
+                        <input type="text" name="name" class="form-control" placeholder="Insert Your Full Name Here ...">
                       </div>
 
                       <div class="form-group">
                         <label class="pull-left">Phone Number</label>
-                        <input type="number" class="form-control" placeholder="Insert your Phone Number Here ...">
+                        <input type="number" name="phone" class="form-control" placeholder="Insert your Phone Number Here ...">
                       </div>
 
                       <div class="form-group">
                         <label class="pull-left">Email</label>
-                        <input type="email" class="form-control" placeholder="Insert your Email Here ...">
+                        <input type="email" name="email" class="form-control" placeholder="Insert your Email Here ...">
                       </div>
 
                       <br>
-
-                      <div class="form-group">
-                        <label class="pull-left">Document Description</label>
-                        <textarea class="form-control" rows="5" placeholder="Insert Your Document Description Here ..."></textarea>
-                      </div>
 
                       <!-- Document Description Form End -->
 

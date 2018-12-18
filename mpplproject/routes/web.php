@@ -17,16 +17,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/login', 'AuthController@getLogin');
+//Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/register', 'AuthController@getRegister');
 Route::post('/dashboard', 'AuthController@PostLogin')->name('loginn');
+Route::patch('/profile', 'UserController@editProfil')->name('editprofile');
+
+Route::get('/dashboard', 'DashController@index')->name('dashboard');
+Route::get('/login', 'AuthController@getLogin')->name('login');
+
 Route::post('/register', 'AuthController@PostRegister')->name('register');
 Route::get('/welcome', 'AuthController@Logout')->name('logout');
 Route::get('/upload', 'DashController@getUpload');
-Route::get('/dashboard', 'DashController@index');
+
 Route::get('/document_approval', 'DashController@getApproval');
 Route::get('/document_arhived', 'DashController@getArhived');
 Route::get('/recent_activity', 'DashController@getActivity');
-Route::get('/profile', 'DashController@getProfile');
+Route::get('/profile', 'UserController@getProfile')->name('profile');
 Route::get('/document_detail', 'DashController@getDetail');

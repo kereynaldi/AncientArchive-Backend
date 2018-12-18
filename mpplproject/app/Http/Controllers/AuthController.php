@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\User;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Session;
 
 class AuthController extends Controller
 {
@@ -39,19 +41,22 @@ class AuthController extends Controller
 
     public function PostLogin(Request $request)
     {
-      \Auth::User();
+      $user = Auth::User();
+
       //authenticating users
-      if (!\Auth::attempt((['email' => $request->email, 'password' => $request->password]))) {
-        return redirect()->back()->with('Error', 'Email atau Password Salah');
+      if (!Auth::attempt((['email' => $request->email, 'password' => $request->password]))) {
+        return redirect()->route('login');
       }
-      //redirect home
-        return view('dashboard');
+      return redirect()->route('dashboard');
+
     }
 
-    public function Logout()
+    public function Logout(Request $request)
     {
       //logout
-      \Auth::logout();
+      $request->session()->flush();
+      Auth::logout();
+
       return view('welcome');
     }
 }

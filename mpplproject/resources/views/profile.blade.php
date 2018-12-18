@@ -69,12 +69,14 @@
         <div class="tab-content">
 
           <div class="active tab-pane" id="settings">
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="{{ route('editprofile') }}" method="POST">
+              {{ csrf_field() }}
+              {{method_field('PATCH')}}
               <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">Name</label>
 
                 <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputName" placeholder="Name">
+                  <input type="text" name="name" class="form-control" id="inputName" placeholder="Nama" value="{{Auth::User()->name}}">
                 </div>
               </div>
 
@@ -82,39 +84,23 @@
                 <label for="inputEmail" class="col-sm-2 control-label">Email</label>
 
                 <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                  <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" value="{{Auth::User()->email}}">
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="inputJob" class="col-sm-2 control-label">Job</label>
+                <label for="inputJob" class="col-sm-2 control-label">Jabatan</label>
 
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputJob" placeholder="Job">
+                  <input type="text" name="jabatan" class="form-control" id="inputJob" placeholder="Jabatan" value="{{Auth::User()->jabatan}}">
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="inputEducation" class="col-sm-2 control-label">Education</label>
+                <label for="inputJob" class="col-sm-2 control-label">Nomor Handphone</label>
 
                 <div class="col-sm-10">
-                  <textarea class="form-control" id="inputEducation" placeholder="Education"></textarea>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="inputAddress" class="col-sm-2 control-label">Address</label>
-
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Address">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="inputNotes" class="col-sm-2 control-label">Notes</label>
-
-                <div class="col-sm-10">
-                  <textarea class="form-control" id="inputNotes" placeholder="Notes"></textarea>
+                  <input type="number" name="no_telp" class="form-control" id="inputNumber" placeholder="Nomor Handphone" value="{{Auth::User()->no_telp}}">
                 </div>
               </div>
 
@@ -123,6 +109,7 @@
                   <button type="submit" class="btn btn-info center-block">Submit</button>
                 </div>
               </div>
+
             </form>
           </div>
           <!-- /.tab-pane -->
