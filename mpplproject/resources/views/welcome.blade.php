@@ -23,15 +23,21 @@
 
         <div class="container-head">
             <h1>Ancient Archive Project</h1>
+<<<<<<< HEAD
             <a class="login" href="{{ url('/login') }}">Login</a>
             <!-- DIHILANGKAN DULU KARENA YANG BISA MENAMBAHKAN PEGAWAI HANYA ADMIN/ATASAN -->
             <!-- BISA DIGUNAKAN KETIKA ROLE SUDAH JADI TAPI PAGE TETAP TERSEMBUNYI STRICTED ACCESS! -->
             <!-- <a class="login" href="{{ url('/register') }}">Register</a> -->
+=======
+            <a class="login" href="{{ url('/register') }}">Register</a>
+            <a> &nbsp;/&nbsp; </a>
+            <a class="login" href="{{ url('/login') }}">Login</a>
+>>>>>>> 9539ac96cf4e50ce4c5fb00dd01e6944a2700f43
         </div>
 
         <div class="container-body">
             <h1>Ancient <br> Archive.</h1>
-            <p>Make Your Archive More Secure!</p>
+            <h2>Make Your Archive More Secure!</h2>
         </div>
 
         <!-- JQuery -->

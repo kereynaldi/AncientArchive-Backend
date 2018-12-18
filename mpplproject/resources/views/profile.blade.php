@@ -18,13 +18,13 @@
       <!-- Profile Image -->
       <div class="box box-primary">
         <div class="box-body box-profile">
-          <img class="profile-user-img img-responsive img-circle" src="{{ asset('beranda/dist/img/Kevin.jpg') }}" alt="User profile picture">
+          <img class="profile-user-img img-responsive img-circle" src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="User profile picture">
 
-          <h3 class="profile-username text-center">Kevin Reynaldi</h3>
+          <h3 class="profile-username text-center">{{Auth::User()->name}}</h3>
 
-          <p class="text-muted text-center"><b>Kerey@gmail.com</b></p>
+          <p class="text-muted text-center"><b>{{Auth::User()->email}}</b></p>
 
-          <p class="text-muted text-center">Software Engineer</p>
+          <p class="text-muted text-center">{{Auth::User()->jabatan}}</p>
         </div>
         <!-- /.box-body -->
       </div>
@@ -69,7 +69,7 @@
         <div class="tab-content">
 
           <div class="active tab-pane" id="settings">
-            <form class="form-horizontal" action="{{ route('editprofile') }}" method="POST">
+            <form class="form-horizontal" action="{{ route('editprofile') }}" method="POST" enctype="multipart/form-data">
               {{ csrf_field() }}
               {{method_field('PATCH')}}
               <div class="form-group">
@@ -108,7 +108,7 @@
                 <label for="inputPhoto" class="col-sm-2 control-label">Photo</label>
 
                 <div class="col-sm-10">
-                  <input type="file" class="form-control" id="inputPhoto">
+                  <input type="file" name="avatar" class="form-control" id="avatar">
                 </div>
               </div>
 
