@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-xs-12">
       <h2 class="page-header">
-        <i class="fa fa-file-text"></i> Permohonan Pengajuan Ruang Seminar
+        <i class="fa fa-file-text"></i> {{$suratt->subjek}}
         <small class="pull-right">Date: 12/12/2018</small>
       </h2>
     </div>
@@ -32,7 +32,7 @@
     <div class="col-sm-4 invoice-col">
       From
       <address>
-        <strong>Kevin Reynaldi</strong><br>
+        <strong>{{$suratt->asalsurat}}</strong><br>
         Phone: (804) 123-5432<br>
         Email: kerey@gmail.com
       </address>
@@ -48,7 +48,7 @@
     </div>
     <!-- /.col -->
     <div class="col-sm-4 invoice-col">
-      <b>Document ID:</b> DA0005<br>
+      <b>Document ID:</b> {{$suratt->id}}<br>
       <b>Created Date:</b> 12 December 2018<br>
     </div>
     <!-- /.col -->

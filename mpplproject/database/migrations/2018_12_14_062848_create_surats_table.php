@@ -15,17 +15,18 @@ class CreateSuratsTable extends Migration
     {
         Schema::create('surats', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('subjek');
+            $table->string('image');
+            $table->string('no_surat');
             $table->string('asalsurat');
             $table->string('tujuansurat');
             $table->string('jenissurat');
             $table->string('deskripsi');
             $table->string('namapenerima');
+            $table->string('telfonpenerima');
             $table->string('emailpenerima');
-            $table->integer('telfonpenerima');
-            $table->unsignedTinyInteger('Status');
+            $table->unsignedTinyInteger('Status')->nullable();
             $table->timestamps();
-            $table->unsignedInteger('idpenerima');
+            $table->unsignedInteger('idpenerima')->nullable();
             $table->foreign('idpenerima')->references('id')->on('users');
         });
     }

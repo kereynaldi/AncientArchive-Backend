@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Session;
 
-class AuthController extends Controller
+class RegisterController extends Controller
 {
     public function getLogin()
     {
@@ -36,5 +36,6 @@ class AuthController extends Controller
         'password' => bcrypt($request->password)
       ]);
       //redirect home
-        return redirect() -> back();
+        return redirect('/login');
     }
+}

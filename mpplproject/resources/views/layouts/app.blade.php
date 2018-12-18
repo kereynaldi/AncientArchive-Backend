@@ -142,16 +142,16 @@
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ asset('beranda/dist/img/kevin.jpg') }}" class="user-image" alt="User Image">
-                <span class="hidden-xs">Kevin Reynaldi</span>
+                <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="user-image" alt="User Image">
+                <span class="hidden-xs">{{Auth::User()->name}}</span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
-                  <img src="{{ asset('beranda/dist/img/kevin.jpg') }}" class="img-circle" alt="User Image">
+                  <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
 
                   <p>
-                    Kevin Reynaldi - Back-end Dev
+                    {{Auth::User()->name}} - {{Auth::User()->jabatan}}
                     <small>Member since September 28, 2018</small>
                   </p>
                 </li>
@@ -186,11 +186,11 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
           <div class="pull-left image">
-            <img src="{{ asset('beranda/dist/img/kevin.jpg') }}" class="img-circle" alt="User Image">
+            <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
             <br>
-            <p>Kevin Reynaldi</p>
+            <p>{{Auth::User()->name}}</p>
           </div>
         </div>
         <!-- search form -->

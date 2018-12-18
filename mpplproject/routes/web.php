@@ -18,13 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 //REGISTER ROUTES - stricted access
-Route::get('/register', 'AuthController@getRegister');
-Route::post('/register', 'AuthController@PostRegister')->name('register');
+Route::get('/register', 'RegisterController@getRegister');
+Route::post('/register', 'RegisterController@PostRegister')->name('register');
 
 //LOGIN LOGOUT ROUTES
 Route::get('/login', 'LoginController@index'); //login index
 Route::post('/login/checklogin', 'LoginController@checklogin'); //check login func
-Route::get('/successlogin', 'LoginController@successlogin'); //session start func
+Route::get('/dashboard', 'LoginController@successlogin'); //session start func
 Route::get('login/logout', 'LoginController@logout')->name('logout'); //logout
 
 //DASHCONTROLLER ROUTES
@@ -33,10 +33,14 @@ Route::get('/dashboard', 'DashController@index')->name('dashboard');
 Route::get('/document_approval', 'DashController@getApproval')->name('document_approval');
 Route::get('/document_archived', 'DashController@getArchived')->name('document_archived');
 Route::get('/recent_activity', 'DashController@getActivity')->name('recent_activity');
-Route::get('/document_detail', 'DashController@getDetail')->name('document_detail');
+Route::get('/document_detail/{id}', 'SuratController@getDetail')->name('document_detail');
 
 //ROUTE PROFIL
-Route::patch('/profile', 'UserController@editProfil')->name('editprofile');
+Route::get('/profile', 'UserController@getProfile');
+Route::patch('/profile', 'UserController@editAvatar')->name('editavatar');
+Route::patch('/profile/update', 'UserController@editProfil')->name('editprofile');
 
 //ROUTE UPLOAD
 Route::get('/upload', 'DashController@getUpload');
+Route::post('/upload/post', 'SuratController@uploadSurat')->name('uploadpost');
+Route::get('/document_detail/{$id}', 'SuratController@getDetail')->name('document_detail');

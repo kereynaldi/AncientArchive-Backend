@@ -50,54 +50,18 @@
                   </tr>
                   </thead>
                   <tbody>
+                    @foreach($surats as $surat)
                     <tr>
-                      <td><a href="{{ url('/document_detail') }}">DA0005</a></td>
-                      <td>Permohonan Pengajuan Ruang Seminar</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-info">Fresh</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-warning btn-flat" data-toggle="modal" data-target="#modal-warning">Review</button>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    <tr>
-                      <td><a href="{{ url('/document_detail') }}">DA0004</a></td>
-                      <td>Permohonan Pengajuan Dana PMW</td>
-                      <td>12 December 2018</td>
+                      <td><a href="{{ url('/document_detail/'.$surat->id) }}">{{$surat->id}}</a></td>
+                      <td>{{$surat->subjek}}</td>
+                      <td>{{$surat->created_at->format('d-m-Y') }}</td>
                       <td><span class="label label-info">Fresh</span></td>
                       <td>
                         <button type="button" class="btn btn-sm btn-warning btn-flat" data-toggle="modal" data-target="#modal-warning">Review</button>
                         <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
                       </td>
                     </tr>
-                    <tr>
-                      <td><a href="{{ url('/document_detail') }}">DA0003</a></td>
-                      <td>Pengajuan Permintaan Kenaikan Pangkat</td>
-                      <td>02 December 2018</td>
-                      <td><span class="label label-info">Fresh</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-warning btn-flat" data-toggle="modal" data-target="#modal-warning">Review</button>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="{{ url('/document_detail') }}">DA0002</a></td>
-                      <td>Permohonan Pengajuan Kegiatan Workshop Bilibili</td>
-                      <td>23 November 2018</td>
-                      <td><span class="label label-info">Fresh</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-warning btn-flat" data-toggle="modal" data-target="#modal-warning">Review</button>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    <tr>
-                      <td><a href="{{ url('/document_detail') }}">DA0001</a></td>
-                      <td>Permohonan Pengajuan Cuti 3 Hari</td>
-                      <td>29 October 2018</td>
-                      <td><span class="label label-info">Fresh</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-warning btn-flat" data-toggle="modal" data-target="#modal-warning">Review</button>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

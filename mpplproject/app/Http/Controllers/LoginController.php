@@ -8,7 +8,7 @@ use Validator;
 use Auth;
 
 class LoginController extends Controller {
-    
+
     //login index/page login
     function index() {
     //ke halaman login
@@ -30,7 +30,7 @@ class LoginController extends Controller {
 
     if(Auth::attempt($user_data)) {
       //sukses redirect ke route success
-      return redirect('successlogin');
+      return redirect('dashboard');
   } else {
       //kembali dengan error jika login detailnya error
       return back()->with('error', 'Wrong Login Details');

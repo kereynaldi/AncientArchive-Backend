@@ -23,6 +23,8 @@
 
         <div class="container-head">
             <h1>Ancient Archive Project</h1>
+            <a class="login" href="{{ url('/register') }}">Register</a>
+            <a> &nbsp;/&nbsp; </a>
             <a class="login" href="{{ url('/login') }}">Login</a>
             <!-- DIHILANGKAN DULU KARENA YANG BISA MENAMBAHKAN PEGAWAI HANYA ADMIN/ATASAN -->
             <!-- BISA DIGUNAKAN KETIKA ROLE SUDAH JADI TAPI PAGE TETAP TERSEMBUNYI STRICTED ACCESS! -->

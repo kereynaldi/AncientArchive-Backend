@@ -27,7 +27,8 @@
           <div class="row">
             <div class="col-md-12">
 
-              <form action="" method="POST" enctype="multipart/form-data" >
+              <form action="{{ route('uploadpost') }}" method="POST" enctype="multipart/form-data" >
+                {{ csrf_field() }}
                 <div class="container">
                   <div class="row">
                   <div class="col-md-12">
@@ -38,7 +39,7 @@
                       <p>Choose a PDF file or drag it here.</p>
                       </div>
                       <!-- <input id="uploadPDF" type="file" name="img_logo" class="dropzone"> -->
-                      <input id="uploadPDF" type="file" name="myPDF" class="dropzone">
+                      <input id="image" type="file" name="image" class="dropzone">
                     </div>
 
                     <div class="preview-zone hidden">
@@ -49,7 +50,7 @@
 
                       <!-- PDF Preview Start -->
 
-                      <input class="btn btn-primary center-block" type="button" value="Preview" onclick="PreviewImage();" />
+                      <input class="btn btn-primary center-block" name="image" type="button" value="Preview" onclick="PreviewImage();" />
                       <br>
 
                       <div style="clear:both">
@@ -69,22 +70,27 @@
                       <div class="form-group">
                         <h4>Mail Description Form</h4>
                         <label class="pull-left">Subject</label>
-                        <input type="text" name="subject" class="form-control" placeholder="Insert Your Full Name Here ...">
+                        <input type="text" name="subject" class="form-control" placeholder="Insert Subject ...">
                       </div>
 
                       <div class="form-group">
                         <label class="pull-left">From</label>
-                        <input type="number" name="from" class="form-control" placeholder="Insert your Phone Number Here ...">
+                        <input type="text" name="from" class="form-control" placeholder="Surat dari ...">
                       </div>
 
                       <div class="form-group">
                         <label class="pull-left">To</label>
-                        <input type="text" name="to" class="form-control" placeholder="Insert your Email Here ...">
+                        <input type="text" name="to" class="form-control" placeholder="Surat untuk ...">
+                      </div>
+
+                      <div class="form-group">
+                        <label class="pull-left">Jenis Surat</label>
+                        <input type="text" name="jenissurat" class="form-control" placeholder="jenis surat ...">
                       </div>
 
                       <div class="form-group">
                         <label class="pull-left">Document Description</label>
-                        <textarea class="form-control" name="deskripsisurat" rows="5" placeholder="Insert Your Document Description Here ..."></textarea>
+                        <textarea class="form-control" name="deskripsisurat" rows="5" placeholder="Deskripsi Surat ..."></textarea>
                       </div>
 
                       <br>
@@ -92,17 +98,17 @@
                       <div class="form-group">
                         <h4>Receiver Description Form</h4>
                         <label class="pull-left">Full Name</label>
-                        <input type="text" name="name" class="form-control" placeholder="Insert Your Full Name Here ...">
+                        <input type="text" name="name" class="form-control" value="{{Auth::User()->name}}" placeholder="Insert Your Full Name Here ...">
                       </div>
 
                       <div class="form-group">
                         <label class="pull-left">Phone Number</label>
-                        <input type="number" name="phone" class="form-control" placeholder="Insert your Phone Number Here ...">
+                        <input type="number" name="phone" class="form-control" value="{{Auth::User()->no_telp}}" placeholder="Insert your Phone Number Here ...">
                       </div>
 
                       <div class="form-group">
                         <label class="pull-left">Email</label>
-                        <input type="email" name="email" class="form-control" placeholder="Insert your Email Here ...">
+                        <input type="email" name="email" class="form-control" value="{{Auth::User()->email}}" placeholder="Insert your Email Here ...">
                       </div>
 
                       <br>

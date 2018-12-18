@@ -105,10 +105,33 @@
               </div>
 
               <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-info center-block">Submit</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <!-- /.tab-pane -->
+        </div>
+        <!-- /.tab-content -->
+      </div>
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#settings" data-toggle="tab">Avatar</a></li>
+        </ul>
+        <div class="tab-content">
+
+          <div class="active tab-pane" id="settings">
+            <form class="form-horizontal" action="{{ route('editavatar') }}" method="POST" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              {{method_field('PATCH')}}
+
+              <div class="form-group">
                 <label for="inputPhoto" class="col-sm-2 control-label">Photo</label>
 
                 <div class="col-sm-10">
-                  <input type="file" name="avatar" class="form-control" id="avatar">
+                  <input type="file" value="" name="avatar" class="form-control" id="avatar">
                 </div>
               </div>
 

@@ -22,6 +22,21 @@ class UserController extends Controller
   {
     //Authenticate User yang sedang login
     $user = Auth::User();
+    //Update
+    $user->update([
+         'name'          => $request->input('name'),
+         'email'         => $request->input('email'),
+         'jabatan'       => $request->input('jabatan'),
+         'no_telp'       => $request->input('no_telp'),
+     ]);
+
+    return redirect()->back();
+  }
+
+  public function editAvatar(Request $request)
+  {
+    //Authenticate User yang sedang login
+    $user = Auth::User();
 
     if($request->User()->avatar) {
       Storage::delete($request->User()->avatar);
@@ -30,14 +45,9 @@ class UserController extends Controller
     //upload gambar
     $image  = $request->file('avatar')->store('avatars');
 
-
     //Update
     $user->update([
-         'name'          => $request->input('name'),
          'avatar'        => $image,
-         'email'         => $request->input('email'),
-         'jabatan'       => $request->input('jabatan'),
-         'no_telp'       => $request->input('no_telp'),
      ]);
 
     return redirect()->back();
