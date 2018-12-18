@@ -78,11 +78,20 @@ body{
     font-weight: bold;
 }
 
+.container-body h2{
+    display: flex;
+    font-size: 2em;
+    font-weight: bold;
+    position: relative;
+    top: 35vh;
+    right: 25vw;
+}
+
 .container-body p{
     font-size: 2em;
     padding-right: 20vw;
     margin-top: -10vh;
-    /* background-color: black; */
+     /*background-color: black; */
 }
 
 @media screen and (min-width: 1380px){
