@@ -23,13 +23,14 @@
 
         <div class="container-head">
             <h1>Ancient Archive Project</h1>
-            <a class="login" href="{{ url('/login') }}">Login</a>
             <a class="login" href="{{ url('/register') }}">Register</a>
+            <a> &nbsp;/&nbsp; </a>
+            <a class="login" href="{{ url('/login') }}">Login</a>
         </div>
 
         <div class="container-body">
             <h1>Ancient <br> Archive.</h1>
-            <p>Make Your Archive More Secure!</p>
+            <h2>Make Your Archive More Secure!</h2>
         </div>
 
         <!-- JQuery -->
