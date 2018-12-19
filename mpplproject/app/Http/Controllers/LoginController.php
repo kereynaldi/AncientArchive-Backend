@@ -30,6 +30,7 @@ class LoginController extends Controller {
 
     if(Auth::attempt($user_data)) {
       //sukses redirect ke route success
+      session()->put('key', '1');
       return redirect('dashboard');
   } else {
       //kembali dengan error jika login detailnya error

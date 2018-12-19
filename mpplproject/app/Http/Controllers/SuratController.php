@@ -12,34 +12,37 @@ class SuratController extends Controller
     public function uploadSurat(Request $request)
     {
         $user = Auth::User();
-        //validate Surat
-        $this->validate($request, [
-          'image' => 'required',
-          'subject' => 'required',
-          'from' => 'required',
-          'to' => 'required',
-          'jenissurat' => 'required',
-          'deskripsisurat' => 'required',
-          'name' => 'required',
-          'email' => 'required',
-          'phone' => 'required',
-        ]);
+        // //validate Surat
+        // $this->validate($request, [
+        //   'image' => 'required',
+        //   'subject' => 'required',
+        //   'from' => 'required',
+        //   'to' => 'required',
+        //   'jenissurat' => 'required',
+        //   'deskripsisurat' => 'required',
+        //   'name' => 'required',
+        //   'email' => 'required',
+        //   'phone' => 'required',
+        // ]);
 
         //upload gambar
         $image  = $request->file('image')->store('gambar');
 
         Surat::create([
           'image' => $image,
-          'subjek' => $request->subject,
-          'jenissurat' => $request->jenissurat,
-          'asalsurat' => $request->from,
-          'tujuansurat' => $request->to,
-          'deskripsi' => $request->deskripsisurat,
-          'namapenerima' => $request->name,
-          'telfonpenerima' => $request->phone,
-          'emailpenerima' => $request->email,
+          'no_surat' => $request->no_surat,
+          'asal_surat' => $request->asal_surat,
+          'tujuan_surat' => $request->tujuan_surat,
+          'perihal' => $request->perihal,
+          'jenis_surat' => $request->jenis_surat,
+          'tanggal_masuk' => $request->tanggal_masuk,
+          'tanggal_dibuat' => $request->tanggal_dibuat,
+          'deskripsi' => $request->deskripsi,
+          'nama_penerima' => $request->nama_penerima,
+          'telfon_penerima' => $request->telfon_penerima,
+          'email_penerima' => $request->email_penerima,
           'Status' => 1,
-          'idpenerima' => $user->id
+          'idpenerima' => $user->id,
       ]);
       //redirect home
         return redirect()->route('dashboard');

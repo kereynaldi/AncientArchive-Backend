@@ -20,8 +20,8 @@
   <div class="row">
     <div class="col-xs-12">
       <h2 class="page-header">
-        <i class="fa fa-file-text"></i> {{$suratt->subjek}}
-        <small class="pull-right">Date: 12/12/2018</small>
+        <i class="fa fa-file-text"></i> {{$suratt->perihal}}
+        <small class="pull-right">Date: {{$suratt->created_at->format('d-m-Y') }}</small>
       </h2>
     </div>
     <!-- /.col -->
@@ -34,7 +34,7 @@
       <address>
         <strong>{{$suratt->asalsurat}}</strong><br>
         Phone: (804) 123-5432<br>
-        Email: kerey@gmail.com
+        Email: {{$suratt->pengunggah->email}}
       </address>
     </div>
     <!-- /.col -->

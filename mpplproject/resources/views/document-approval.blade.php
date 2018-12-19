@@ -50,10 +50,11 @@
                   </tr>
                   </thead>
                   <tbody>
+                  @if($surats->count() !== 0)
                     @foreach($surats as $surat)
                     <tr>
                       <td><a href="{{ url('/document_detail/'.$surat->id) }}">{{$surat->id}}</a></td>
-                      <td>{{$surat->subjek}}</td>
+                      <td>{{$surat->perihal}}</td>
                       <td>{{$surat->created_at->format('d-m-Y') }}</td>
                       <td><span class="label label-info">Fresh</span></td>
                       <td>
@@ -62,6 +63,9 @@
                       </td>
                     </tr>
                     @endforeach
+                  @else
+                    <tr><td>Tidak ada surat masuk</td></tr>
+                  @endif
                   </tbody>
                 </table>
               </div>

@@ -29,12 +29,13 @@ class RegisterController extends Controller
       //   'password' => 'required|min:6',
       // ]);
 
-      User::create([
+      $user = User::create([
         'NIP' => $request->NIP,
         'name' => $request->name,
         'email' => $request->email,
         'password' => bcrypt($request->password)
       ]);
+      $user->assignRole('user');
       //redirect home
         return redirect('/login');
     }

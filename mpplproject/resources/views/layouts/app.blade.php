@@ -96,7 +96,11 @@
                     <li><!-- start message -->
                       <a href="#">
                         <div class="pull-left">
+                          @if(auth()->user()->avatar)
                           <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
+                          @else
+                          <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
+                          @endif
                         </div>
                         <h4>
                           {{Auth::User()->name}}
@@ -142,13 +146,23 @@
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <!-- profile picture default & update-->
+                @if(auth()->user()->avatar)
                 <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="user-image" alt="User Image">
+                @else
+                <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="user-image" alt="User Image">
+                @endif
                 <span class="hidden-xs">{{Auth::User()->name}}</span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
+                  <!-- profile picture default & update-->
+                  @if(auth()->user()->avatar)
                   <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
+                  @else
+                  <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
+                  @endif
 
                   <p>
                     {{Auth::User()->name}} - {{Auth::User()->jabatan}}
@@ -186,7 +200,12 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
           <div class="pull-left image">
+            <!-- profile picture default & update-->
+            @if(auth()->user()->avatar)
             <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
+            @else
+            <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
+            @endif
           </div>
           <div class="pull-left info">
             <br>
@@ -229,7 +248,7 @@
           </li>
 
           <li>
-            <a href="{{ url('/document_arhived') }}">
+            <a href="{{ url('/document_archived') }}">
               <i class="fa fa-folder"></i> <span>Archived Document</span>
             </a>
           </li>

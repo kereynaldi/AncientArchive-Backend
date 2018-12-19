@@ -21,6 +21,7 @@ class UsersTablesSeeder extends Seeder
         'jabatan' => 'Pegawai',
         'no_telp' => '08121223778',
       ]);
+      $user->assignRole('admin');
       $user->save();
     }
 }

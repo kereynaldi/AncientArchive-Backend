@@ -52,7 +52,7 @@ class DashController extends Controller
   public function getArchived()
   {
       if ( session('key') != null ){
-      return view('document-archived');
+        return view('document-archived');
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';

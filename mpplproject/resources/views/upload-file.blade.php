@@ -39,7 +39,7 @@
                       <p>Choose a PDF file or drag it here.</p>
                       </div>
                       <!-- <input id="uploadPDF" type="file" name="img_logo" class="dropzone"> -->
-                      <input id="image" type="file" name="image" class="dropzone">
+                      <input id="uploadPDF" type="file" name="image" class="dropzone">
                     </div>
 
                     <div class="preview-zone hidden">
