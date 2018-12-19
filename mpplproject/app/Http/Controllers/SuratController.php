@@ -73,4 +73,36 @@ class SuratController extends Controller
             return view('login');
         }
     }
+
+    public function updateStatus($id)
+    {
+        if ( session('key') != null ){
+          $suratt = Surat::find($id);
+          $suratt->Status = 1;
+          $suratt->save();
+
+          return redirect()->back();
+        } else {
+            echo "<script type='text/javascript'>alert('Please login first to see this page!');
+                window.location = '/login';
+                </script>";
+            return view('login');
+        }
+    }
+
+    public function cancelStatus($id)
+    {
+        if ( session('key') != null ){
+          $suratt = Surat::find($id);
+          $suratt->Status = NULL;
+          $suratt->save();
+
+          return redirect()->back();
+        } else {
+            echo "<script type='text/javascript'>alert('Please login first to see this page!');
+                window.location = '/login';
+                </script>";
+            return view('login');
+        }
+    }
 }

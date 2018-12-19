@@ -56,7 +56,6 @@ class DashController extends Controller
   {
       if ( session('key') != null ){
         $surats = Surat::all();
-        //dd($surats);
         return view('document-approval', compact('surats'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
