@@ -52,16 +52,19 @@
                   <tbody>
                   @if($surats->count() !== 0)
                     @foreach($surats as $surat)
-                    <tr>
-                      <td><a href="{{ url('/document_detail/'.$surat->id) }}">{{$surat->id}}</a></td>
-                      <td>{{$surat->perihal}}</td>
-                      <td>{{$surat->created_at->format('d-m-Y') }}</td>
-                      <td><span class="label label-info">Fresh</span></td>
-                      <td>
-                        <!-- UNTUK MENGAJUKAN REVIEW KE ADMIN/ATASAN -->
-                        <button type="button" class="btn btn-sm btn-warning btn-flat" data-toggle="modal" data-target="#modal-warning">Review</button>
-                      </td>
-                    </tr>
+                      @if($surat->Status == NULL)
+                        <tr>
+                          <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
+                          <td>{{$surat->perihal}}</td>
+                          <td>{{$surat->created_at->format('d-m-Y') }}</td>
+                          <td><span class="label label-info">Fresh</span></td>
+                          <td>
+                              <a href="{{ url('/status/update/' . $surat->id) }}">
+                              <button type="button" class="btn btn-sm btn-warning btn-flat">Review</button>
+                              </a>
+                          </td>
+                        </tr>
+                      @endif
                     @endforeach
                   @else
                     <tr><td>Tidak ada surat masuk</td></tr>
@@ -104,49 +107,25 @@
                   </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0005</a></td>
-                      <td>Permohonan Pengajuan Ruang Seminar</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-warning">Review</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Cancel</button>
-                      </td>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0004</a></td>
-                      <td>Permohonan Pengajuan Dana PMW</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-warning">Review</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Cancel</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0003</a></td>
-                      <td>Pengajuan Permintaan Kenaikan Pangkat</td>
-                      <td>02 December 2018</td>
-                      <td><span class="label label-warning">Review</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Cancel</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0002</a></td>
-                      <td>Permohonan Pengajuan Kegiatan Workshop Bilibili</td>
-                      <td>23 November 2018</td>
-                      <td><span class="label label-warning">Review</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Cancel</button>
-                      </td>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0001</a></td>
-                      <td>Permohonan Pengajuan Cuti 3 Hari</td>
-                      <td>29 October 2018</td>
-                      <td><span class="label label-warning">Review</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Cancel</button>
-                      </td>
-                    </tr>
+                  @if($surats->count() !== 0)
+                    @foreach($surats as $surat)
+                      @if($surat->Status == 1)
+                        <tr>
+                          <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
+                          <td>{{$surat->perihal}}</td>
+                          <td>{{$surat->created_at->format('d-m-Y') }}/td>
+                          <td><span class="label label-warning">Review</span></td>
+                          <td>
+                            <a href="{{ url('/status/cancel/' . $surat->id) }}">
+                            <button type="button" class="btn btn-sm btn-danger btn-flat">Cancel</button>
+                          </a>
+                          </td>
+                        </tr>
+                      @endif
+                    @endforeach
+                  @else
+                    <tr><td>Tidak ada surat masuk</td></tr>
+                  @endif
                   </tbody>
                 </table>
               </div>
@@ -352,51 +331,6 @@
     <!-- /.modal-dialog -->
   </div>
   <!-- /.modal -->
-
-  <div class="modal modal-warning fade" id="modal-warning">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Change Status to <b>Review</b></h4>
-        </div>
-        <div class="modal-body">
-          <p>Do You Want to change this Document Status to <b>Review</b>?</p>
-        </div>
-        <div class="modal-footer">
-          <a href="../document-approval/document-approval.html"><button type="button" class="btn btn-outline">Yes</button></a>
-          <button type="button" class="btn btn-outline" data-dismiss="modal">No</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-
-  <div class="modal modal-danger fade" id="modal-danger">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Change Status to <b>Fresh</b></h4>
-        </div>
-        <div class="modal-body">
-          <p>Do You Want to change back this Document Status to <b>Fresh</b>?</p>
-        </div>
-        <div class="modal-footer">
-          <a href="../document-approval/document-approval.html"><button type="button" class="btn btn-outline">Yes</button></a>
-          <button type="button" class="btn btn-outline" data-dismiss="modal">No</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-
-  <!-- Modal End -->
 
   <!-- Navigation Tab End -->
 

@@ -52,3 +52,7 @@ Route::get('/document_detail/edit/{id}', 'SuratController@getEdit');
 
 //ROUTE API NOTIF
 Route::get('/document_received', 'DashController@getReceived')->name('document_received');
+
+//ROUTE SURAT
+Route::get('/status/update/{id}', 'SuratController@updateStatus');
+Route::get('/status/cancel/{id}', 'SuratController@cancelStatus');
