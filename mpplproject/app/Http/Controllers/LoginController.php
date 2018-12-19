@@ -47,9 +47,9 @@ class LoginController extends Controller {
         //session('key') bernilai 1
         session()->put('key', '1');
         if(Auth::User()->hasRole('user')){
-            return redirect('admin_dashboard');
-        } else {
             return redirect('dashboard/user');
+        } else {
+            return redirect('admin_dashboard');
       };
     }
 

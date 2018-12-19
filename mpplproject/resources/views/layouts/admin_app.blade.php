@@ -60,7 +60,7 @@
     <header class="main-header">
 
       <!-- Logo -->
-      <a href="{{ url('/dashboard') }}" class="logo">
+      <a href="{{ url('/admin_dashboard') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b>A</span>
         <!-- logo for regular state and mobile devices -->
@@ -230,7 +230,7 @@
 
           <li class="header">MAIN MENU</li>
           <li>
-            <a href="{{ url('/dashboard') }}">
+            <a href="{{ url('/admin_dashboard') }}">
               <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
           </li>
