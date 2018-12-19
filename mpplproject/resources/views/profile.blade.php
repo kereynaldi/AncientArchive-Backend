@@ -64,6 +64,7 @@
       <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#settings" data-toggle="tab">Profile Settings</a></li>
+          <li><a href="#avatar" data-toggle="tab">Avatar</a></li>
         </ul>
         <div class="tab-content">
 
@@ -136,16 +137,8 @@
             </form>
           </div>
           <!-- /.tab-pane -->
-        </div>
-        <!-- /.tab-content -->
-      </div>
-      <div class="nav-tabs-custom">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#settings" data-toggle="tab">Avatar</a></li>
-        </ul>
-        <div class="tab-content">
 
-          <div class="active tab-pane" id="settings">
+          <div class="tab-pane" id="avatar">
             <form class="form-horizontal" action="{{ route('editavatar') }}" method="POST" enctype="multipart/form-data">
               {{ csrf_field() }}
               {{method_field('PATCH')}}
@@ -167,8 +160,10 @@
             </form>
           </div>
           <!-- /.tab-pane -->
+
         </div>
         <!-- /.tab-content -->
+        
       </div>
       <!-- /.nav-tabs-custom -->
     </div>
