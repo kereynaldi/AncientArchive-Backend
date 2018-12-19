@@ -52,7 +52,7 @@
                   <tbody>
                   @if($surats->count() !== 0)
                     @foreach($surats as $surat)
-                      @if($surat->Status == NULL)
+                      @if($surat->Status == NULL && $surat->archived_status == 1)
                         <tr>
                           <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
                           <td>{{$surat->perihal}}</td>
@@ -109,7 +109,7 @@
                   <tbody>
                   @if($surats->count() !== 0)
                     @foreach($surats as $surat)
-                      @if($surat->Status == 1)
+                      @if($surat->Status == 1 && $surat->archived_status == 1)
                         <tr>
                           <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
                           <td>{{$surat->perihal}}</td>
@@ -166,7 +166,7 @@
                   <tbody>
                     @if($surats->count() !== 0)
                       @foreach($surats as $surat)
-                        @if($surat->Status == 2)
+                        @if($surat->Status == 2 && $surat->archived_status == 1)
                           <tr>
                             <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
                             <td>{{$surat->perihal}}</td>
@@ -223,7 +223,7 @@
                   <tbody>
                     @if($surats->count() !== 0)
                       @foreach($surats as $surat)
-                        @if($surat->Status == 4)
+                        @if($surat->Status == 4 && $surat->archived_status == 1)
                           <tr>
                             <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
                             <td>{{$surat->perihal}}</td>

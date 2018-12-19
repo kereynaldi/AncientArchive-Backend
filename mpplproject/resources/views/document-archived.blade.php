@@ -46,54 +46,30 @@
                   </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><a href="{{ url('/document_detail') }}">DA0005</a></td>
-                      <td>Permohonan Pengajuan Ruang Seminar</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-info">Fresh</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    <tr>
-                      <td><a href="{{ url('/document_detail') }}">DA0004</a></td>
-                      <td>Permohonan Pengajuan Dana PMW</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-info">Fresh</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="{{ url('/document_detail') }}">DA0003</a></td>
-                      <td>Pengajuan Permintaan Kenaikan Pangkat</td>
-                      <td>02 December 2018</td>
-                      <td><span class="label label-info">Fresh</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="{{ url('/document_detail') }}">DA0002</a></td>
-                      <td>Permohonan Pengajuan Kegiatan Workshop Bilibili</td>
-                      <td>23 November 2018</td>
-                      <td><span class="label label-info">Fresh</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    <tr>
-                      <td><a href="{{ url('/document_detail') }}">DA0001</a></td>
-                      <td>Permohonan Pengajuan Cuti 3 Hari</td>
-                      <td>29 October 2018</td>
-                      <td><span class="label label-info">Fresh</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    </tr>
+                    @if($datasurat_getarchived->count() !== 0)
+                      @foreach($datasurat_getarchived as $surat)
+                        @if($surat->Status == NULL && $surat->archived_status == 2)
+                          <tr>
+                            <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
+                            <td>{{$surat->perihal}}</td>
+                            <td>{{$surat->created_at->format('d-m-Y') }}</td>
+                            <td><span class="label label-info">Fresh</span></td>
+                            <td>
+                                <a href="{{ url('/surat/restore/' . $surat->id) }}">
+                                  <button type="button" class="btn btn-sm btn-success btn-flat">Restore</button>
+                                </a>
+                                <form action="{{ route('suratdelete', $surat->id) }}" method="POST">
+                                  {{ csrf_field() }}
+                                  {{ method_field('DELETE') }}
+                                    <button type="submit" class="btn btn-sm btn-danger btn-flat">Delete</button>
+                                </form>
+                            </td>
+                          </tr>
+                        @endif
+                      @endforeach
+                    @else
+                      <tr><td>Tidak ada surat masuk</td></tr>
+                    @endif
                   </tbody>
                 </table>
               </div>
@@ -131,54 +107,30 @@
                     <th>Action</th>
                   </tr>
                   </thead>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0005</a></td>
-                      <td>Permohonan Pengajuan Ruang Seminar</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-success">Approved</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0004</a></td>
-                      <td>Permohonan Pengajuan Dana PMW</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-success">Approved</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0003</a></td>
-                      <td>Pengajuan Permintaan Kenaikan Pangkat</td>
-                      <td>02 December 2018</td>
-                      <td><span class="label label-success">Approved</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0002</a></td>
-                      <td>Permohonan Pengajuan Kegiatan Workshop Bilibili</td>
-                      <td>23 November 2018</td>
-                      <td><span class="label label-success">Approved</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0001</a></td>
-                      <td>Permohonan Pengajuan Cuti 3 Hari</td>
-                      <td>29 October 2018</td>
-                      <td><span class="label label-success">Approved</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    </tr>
+                  @if($datasurat_getarchived->count() !== 0)
+                    @foreach($datasurat_getarchived as $surat)
+                      @if($surat->Status == 2 && $surat->archived_status == 2)
+                        <tr>
+                          <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
+                          <td>{{$surat->perihal}}</td>
+                          <td>{{$surat->created_at->format('d-m-Y') }}</td>
+                          <td><span class="label label-success">Approved</span></td>
+                          <td>
+                              <a href="{{ url('/surat/restore/' . $surat->id) }}">
+                                <button type="button" class="btn btn-sm btn-success btn-flat">Restore</button>
+                              </a>
+                              <form action="{{ route('suratdelete', $surat->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                  <button type="submit" class="btn btn-sm btn-danger btn-flat">Delete</button>
+                              </form>
+                          </td>
+                        </tr>
+                      @endif
+                    @endforeach
+                  @else
+                    <tr><td>Tidak ada surat masuk</td></tr>
+                  @endif
                   </tbody>
                 </table>
               </div>
@@ -208,63 +160,30 @@
               <div class="table-responsive">
                 <table id="example3"  class="table no-margin">
                   <thead>
-                  <tr>
-                    <th>Document ID</th>
-                    <th>Document Name</th>
-                    <th>Archieved Date</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0005</a></td>
-                      <td>Permohonan Pengajuan Ruang Seminar</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-danger">Declined</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0004</a></td>
-                      <td>Permohonan Pengajuan Dana PMW</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-danger">Declined</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0003</a></td>
-                      <td>Pengajuan Permintaan Kenaikan Pangkat</td>
-                      <td>02 December 2018</td>
-                      <td><span class="label label-danger">Declined</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0002</a></td>
-                      <td>Permohonan Pengajuan Kegiatan Workshop Bilibili</td>
-                      <td>23 November 2018</td>
-                      <td><span class="label label-danger">Declined</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0001</a></td>
-                      <td>Permohonan Pengajuan Cuti 3 Hari</td>
-                      <td>29 October 2018</td>
-                      <td><span class="label label-danger">Declined</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-success">Restore</button>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Delete</button>
-                      </td>
-                    </tr>
+                    @if($datasurat_getarchived->count() !== 0)
+                      @foreach($datasurat_getarchived as $surat)
+                        @if($surat->Status == 4 && $surat->archived_status == 2)
+                          <tr>
+                            <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
+                            <td>{{$surat->perihal}}</td>
+                            <td>{{$surat->created_at->format('d-m-Y') }}</td>
+                            <td><span class="label label-danger">Declined</span></td>
+                            <td>
+                                <a href="{{ url('/surat/restore/' . $surat->id) }}">
+                                  <button type="button" class="btn btn-sm btn-success btn-flat">Restore</button>
+                                </a>
+                                <form action="{{ route('suratdelete', $surat->id) }}" method="POST">
+                                  {{ csrf_field() }}
+                                  {{ method_field('DELETE') }}
+                                    <button type="submit" class="btn btn-sm btn-danger btn-flat">Delete</button>
+                                </form>
+                            </td>
+                          </tr>
+                        @endif
+                      @endforeach
+                    @else
+                      <tr><td>Tidak ada surat masuk</td></tr>
+                    @endif
                   </tbody>
                 </table>
               </div>

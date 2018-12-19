@@ -155,7 +155,7 @@
                           @if($surat->Status == NULL) <td><span class="label label-info">Fresh</span></td>
                           @elseif($surat->Status == 1) <td><span class="label label-warning">Review</span></td>
                           @elseif($surat->Status == 2) <td><span class="label label-success">Approved</span></td>
-                          @elseif($surat->Status == 3) <td><span class="label label-primary">Archived</span></td>
+                          @elseif($surat->archived_status == 2) <td><span class="label label-primary">Archived</span></td>
                           @elseif($surat->Status == 4) <td><span class="label label-danger">Declined</span></td>
                           @endif
                         </tr>

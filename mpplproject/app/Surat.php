@@ -17,7 +17,7 @@ class Surat extends Model
   protected $table = 'surats';
   protected $primaryKey = 'id';
   protected $fillable = [
-      'image', 'no_surat', 'asal_surat', 'tujuan_surat', 'perihal', 'jenis_surat', 'tanggal_masuk', 'tanggal_dibuat', 'deskripsi', 'nama_penerima','telfon_penerima', 'email_penerima', 'Status', 'idpenerima',
+      'image', 'no_surat', 'asal_surat', 'tujuan_surat', 'perihal', 'jenis_surat', 'tanggal_masuk', 'tanggal_dibuat', 'deskripsi', 'nama_penerima','telfon_penerima', 'email_penerima', 'Status', 'archived_status', 'idpenerima',
   ];
 
   public function pengunggah()

@@ -42,6 +42,7 @@ class SuratController extends Controller
           'telfon_penerima' => $request->telfon_penerima,
           'email_penerima' => $request->email_penerima,
           'Status' => NULL,
+          'archived_status' => 1,
           'idpenerima' => $user->id,
       ]);
       //redirect home
@@ -126,10 +127,10 @@ class SuratController extends Controller
     {
         if ( session('key') != null ){
           $datasurat_archived = Surat::find($id);
-          $datasurat_archived->Status = 3;
+          $datasurat_archived->archived_status = 2; //surat di archived
           $datasurat_archived->save();
 
-          return redirect()->back();
+          return redirect('/document_archived');
         } else {
             echo "<script type='text/javascript'>alert('Please login first to see this page!');
                 window.location = '/login';
@@ -144,6 +145,40 @@ class SuratController extends Controller
           $datasurat_declined = Surat::find($id);
           $datasurat_declined->Status = 4;
           $datasurat_declined->save();
+
+          return redirect()->back();
+        } else {
+            echo "<script type='text/javascript'>alert('Please login first to see this page!');
+                window.location = '/login';
+                </script>";
+            return view('login');
+        }
+    }
+
+    public function suratRestore($id)
+    {
+        if ( session('key') != null ){
+          $datasurat_restored = Surat::find($id);
+          $datasurat_restored->archived_status = 1; //surat batal di archived
+          $datasurat_restored->save();
+
+          if (Auth::User()->hasRole('admin')) {
+            return redirect('/admin_document_approval');
+          }
+            return redirect('/document_approval');
+        } else {
+            echo "<script type='text/javascript'>alert('Please login first to see this page!');
+                window.location = '/login';
+                </script>";
+            return view('login');
+        }
+    }
+
+    public function suratDelete($id)
+    {
+        if ( session('key') != null ){
+          $datasurat_deleted = Surat::find($id);
+          $datasurat_deleted->delete();
 
           return redirect()->back();
         } else {

@@ -68,7 +68,8 @@ class DashController extends Controller
   public function getArchived()
   {
       if ( session('key') != null ){
-        return view('document-archived');
+        $datasurat_getarchived = Surat::all();
+        return view('document-archived', compact('datasurat_getarchived'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';

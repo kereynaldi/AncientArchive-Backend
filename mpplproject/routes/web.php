@@ -59,3 +59,5 @@ Route::get('/status/cancel/{id}', 'SuratController@cancelStatus');
 Route::get('/status/approved/{id}', 'SuratController@approvedStatus');
 Route::get('/status/archived/{id}', 'SuratController@archivedStatus');
 Route::get('/status/declined/{id}', 'SuratController@declinedStatus');
+Route::get('/surat/restore/{id}', 'SuratController@suratRestore');
+Route::delete('/surat/delete/{id}', 'SuratController@suratDelete')->name('suratdelete');
