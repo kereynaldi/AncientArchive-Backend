@@ -18,7 +18,7 @@ class User extends Authenticatable
     protected $table = 'users';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'NIP', 'avatar', 'name', 'email', 'password', 'jabatan', 'no_telp',
+        'NIP', 'avatar', 'name', 'email', 'password', 'jabatan', 'no_telp', 'education', 'notes', 'ruangan'
     ];
 
     /**
@@ -29,4 +29,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function account()
+    {
+       return $this->hasOne('App\Profile', 'profile_id');
+    }
 }

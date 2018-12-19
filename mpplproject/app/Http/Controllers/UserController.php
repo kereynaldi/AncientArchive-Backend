@@ -6,16 +6,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 use App\User;
-
-
 class UserController extends Controller
 {
   public function getProfile()
   {
-      //get data User yang sedang login
-      $user       = Auth::user();
-      $viewProfile = $user->get();
-      return view('profile', compact('viewProfile', 'user'));
+
+      if ( session('key') != null ){
+
+        //get data User yang sedang login
+        $user       = Auth::user();
+        $viewProfile = $user->get();
+        return view('profile', compact('viewProfile', 'user', 'profile'));
+
+        } else {
+            echo "<script type='text/javascript'>alert('Please login first to see this page!');
+                window.location = '/main';
+                </script>"; 
+            return view('login');
+        }
   }
 
   public function editProfil(Request $request)
@@ -28,6 +36,9 @@ class UserController extends Controller
          'email'         => $request->input('email'),
          'jabatan'       => $request->input('jabatan'),
          'no_telp'       => $request->input('no_telp'),
+         'education'       => $request->input('education'),
+         'ruangan'       => $request->input('ruangan'),
+         'notes'       => $request->input('notes'),
      ]);
 
     return redirect()->back();

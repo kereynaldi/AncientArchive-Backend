@@ -39,21 +39,20 @@
         <div class="box-body">
           <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
 
-          <p class="text-muted">
-            Computer Science in the Bogor Agriculture University from 2015
+          <p class="text-muted">{{Auth::User()->education}}
           </p>
 
           <hr>
 
-          <strong><i class="fa fa-map-marker margin-r-5"></i> Address</strong>
+          <strong><i class="fa fa-map-marker margin-r-5"></i> Ruangan</strong>
 
-          <p class="text-muted">Balebak, IPB Dramaga</p>
+          <p class="text-muted">{{Auth::User()->ruangan}}</p>
 
           <hr>
 
           <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
 
-          <p>Apa kau tahu kemana arah angin berhembus? Jawabannya adalah hari esok</p>
+          <p>{{Auth::User()->notes}}</p>
         </div>
         <!-- /.box-body -->
       </div>
@@ -97,10 +96,34 @@
               </div>
 
               <div class="form-group">
-                <label for="inputJob" class="col-sm-2 control-label">Nomor Handphone</label>
+                <label for="inputEducation" class="col-sm-2 control-label">Education</label>
 
                 <div class="col-sm-10">
-                  <input type="number" name="no_telp" class="form-control" id="inputNumber" placeholder="Nomor Handphone" value="{{Auth::User()->no_telp}}">
+                  <input type="text" name="education" class="form-control" id="inputEducation" placeholder="Education" value="{{Auth::User()->education}}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputRuangan" class="col-sm-2 control-label">Ruangan</label>
+
+                <div class="col-sm-10">
+                  <input type="text" name="ruangan" class="form-control" id="inputRuangan" placeholder="Ruangan" value="{{Auth::User()->ruangan}}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputNomor" class="col-sm-2 control-label">Nomor Handphone</label>
+
+                <div class="col-sm-10">
+                  <input type="number" name="no_telp" class="form-control" id="inputNomor" placeholder="Nomor Handphone" value="{{Auth::User()->no_telp}}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputNotes" class="col-sm-2 control-label">Notes</label>
+
+                <div class="col-sm-10">
+                  <input type="textarea" name="notes" class="form-control" id="inputNotes" placeholder="Notes" value="{{Auth::User()->notes}}">
                 </div>
               </div>
 

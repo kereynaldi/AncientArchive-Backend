@@ -23,6 +23,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('jabatan')->nullable();
             $table->string('no_telp')->nullable();
+            $table->string('education')->nullable();
+            $table->string('ruangan')->nullable();
+            $table->string('notes')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
