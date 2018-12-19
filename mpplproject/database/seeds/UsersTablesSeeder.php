@@ -17,7 +17,7 @@ class UsersTablesSeeder extends Seeder
         'NIP' => '00011000',
         'name' => 'John Smith',
         'email' => 'john_smith@gmail.com',
-        'password' => 'password',
+        'password' => Hash::make('password'),
         'jabatan' => 'Pegawai',
         'no_telp' => '08121223778',
       ]);
