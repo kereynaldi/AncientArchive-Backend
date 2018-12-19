@@ -44,5 +44,4 @@ Route::patch('/profile/update', 'UserController@editProfil')->name('editprofile'
 //ROUTE UPLOAD
 Route::get('/upload', 'DashController@getUpload');
 Route::post('/upload/post', 'SuratController@uploadSurat')->name('uploadpost');
-Route::get('/document_detail/{$id}', 'SuratController@getDetail')->name('document_detail');
-Route::get('/editsurat/{$id}', 'SuratController@getDetail');
+Route::get('/document_detail/edit/{id}', 'SuratController@getEdit');

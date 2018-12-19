@@ -1,37 +1,14 @@
-<form action="{{ route('uploadpost') }}" method="POST" enctype="multipart/form-data" >
+@extends('layouts.app')
+
+@section('content')
+
+<form action="#" method="POST" enctype="multipart/form-data" >
     {{ csrf_field() }}
     <div class="container">
       <div class="row">
       <div class="col-md-12">
         <div class="form-group">
-        <div class="dropzone-wrapper">
-          <div class="dropzone-desc">
-          <i class="glyphicon glyphicon-download-alt"></i>
-          <p>Choose a PDF file or drag it here.</p>
-          </div>
-          <!-- <input id="uploadPDF" type="file" name="img_logo" class="dropzone"> -->
-          <input id="uploadPDF" type="file" name="image" class="dropzone">
-        </div>
-
         <div class="preview-zone">
-          <div class="box box-solid">
-          <div class="with-border">
-            <h2>File Preview</h2>
-          </div>
-
-          <!-- PDF Preview Start -->
-
-          <input class="btn btn-primary center-block" name="image" type="button" value="Preview" onclick="PreviewImage();" />
-          <br>
-
-          <div style="clear:both">
-            <iframe target="_blank" id="viewer" frameborder="0" scrolling="no" width="100%" height="500"></iframe>
-          </div>
-
-          <!-- PDF Preview End -->
-
-          <div class="box-body"></div>
-          </div>
 
           <!-- Document Description Form Start -->
 
@@ -56,12 +33,12 @@
 
           <div class="form-group">
             <label class="pull-left">Perihal Surat</label>
-            <input type="text" name="perihal" class="form-control" placeholder="perihal surat value="{{$suratt->perihal}}"">
+            <input type="text" name="perihal" class="form-control" placeholder="perihal surat" value="{{$suratt->perihal}}">
           </div>
 
           <div class="form-group">
             <label class="pull-left">Jenis Surat</label>
-            <input class="form-control" name="jenis_surat" rows="5" placeholder="jenis surat" value=" value="{{$suratt->jenis_surat}}"">
+            <input class="form-control" name="jenis_surat" rows="5" placeholder="jenis surat" value="{{$suratt->jenis_surat}}">
           </div>
 
            <div class="form-group">
@@ -76,7 +53,7 @@
 
            <div class="form-group">
             <label class="pull-left">Deskripsi Surat</label>
-            <textarea type="text" name="deskripsi" class="form-control" placeholder="deskripsi surat"  value="{{$suratt->deskripsi}}"></textarea>
+            <textarea type="text" name="deskripsi" class="form-control" placeholder="deskripsi surat">{{$suratt->deskripsi}}</textarea>
           </div>
 
            <div class="form-group">
@@ -128,3 +105,4 @@
       </div>
     </div>
   </form>
+@endsection

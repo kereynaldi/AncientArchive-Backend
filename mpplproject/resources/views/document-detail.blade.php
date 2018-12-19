@@ -92,7 +92,7 @@
   <!-- Download & Download Button -->
   <div class="row no-print">
     <div class="col-xs-12">
-    <a href="{{ url('/editsurat/' . $suratt->id) }}" target="_blank" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
+    <a href="{{ url('document_detail/edit/' .$suratt->id) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
       <a href="#" target="_blank" class="btn btn-success pull-right"><i class="fa fa-download"></i> Download</a>
     </div>
   </div>
