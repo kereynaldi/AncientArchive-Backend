@@ -170,7 +170,7 @@
                       <td>12 December 2018</td>
                       <td><span class="label label-success">Approved</span></td>
                       <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
+                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archive</button>
                       </td>
                     <tr>
                       <td><a href="../document-detail/document-detail.html">DA0004</a></td>
