@@ -146,34 +146,23 @@
           </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><a href="{{ url('/document_detail') }}">DA0005</a></td>
-              <td>Permohonan Pengajuan Ruang Seminar</td>
-              <td>12 December 2018</td>
-              <td><span class="label label-warning">Review</span></td>
-            <tr>
-              <td><a href="{{ url('/document_detail') }}">DA0004</a></td>
-              <td>Permohonan Pengajuan Dana PMW</td>
-              <td>12 December 2018</td>
-              <td><span class="label label-success">Approved</span></td>
-            </tr>
-            <tr>
-              <td><a href="{{ url('/document_detail') }}">DA0003</a></td>
-              <td>Pengajuan Permintaan Kenaikan Pangkat</td>
-              <td>02 December 2018</td>
-              <td><span class="label label-danger">Declined</span></td>
-            </tr>
-            <tr>
-              <td><a href="{{ url('/document_detail') }}">DA0002</a></td>
-              <td>Permohonan Pengajuan Kegiatan Workshop Bilibili</td>
-              <td>23 November 2018</td>
-              <td><span class="label label-success">Approved</span></td>
-            <tr>
-              <td><a href="{{ url('/document_detail') }}">DA0001</a></td>
-              <td>Permohonan Pengajuan Cuti 3 Hari</td>
-              <td>29 October 2018</td>
-              <td><span class="label label-warning">Review</span></td>
-            </tr>
+            @if($datasurat_dash->count() !== 0)
+                @foreach($datasurat_dash as $surat)
+                    <tr>
+                      <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
+                          <td>{{$surat->perihal}}</td>
+                          <td>{{$surat->created_at->format('d-m-Y') }}</td>
+                          @if($surat->Status == NULL) <td><span class="label label-info">Fresh</span></td>
+                          @elseif($surat->Status == 1) <td><span class="label label-warning">Review</span></td>
+                          @elseif($surat->Status == 2) <td><span class="label label-success">Approved</span></td>
+                          @elseif($surat->Status == 3) <td><span class="label label-primary">Archived</span></td>
+                          @elseif($surat->Status == 4) <td><span class="label label-danger">Declined</span></td>
+                          @endif
+                        </tr>
+                    @endforeach
+                @else
+                    <tr><td>Tidak ada surat masuk</td></tr>
+              @endif
           </tbody>
         </table>
       </div>
