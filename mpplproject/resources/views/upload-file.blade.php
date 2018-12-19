@@ -69,45 +69,75 @@
 
                       <div class="form-group">
                         <h4>Mail Description Form</h4>
-                        <label class="pull-left">Subject</label>
-                        <input type="text" name="subject" class="form-control" placeholder="Insert Subject ...">
+                        <label class="pull-left">No. Surat</label>
+                        <input type="text" name="no_surat" class="form-control" placeholder="Insert Subject ...">
                       </div>
 
                       <div class="form-group">
-                        <label class="pull-left">From</label>
-                        <input type="text" name="from" class="form-control" placeholder="Surat dari ...">
+                        <label class="pull-left">Asal Surat</label>
+                        <input type="text" name="asal_surat" class="form-control" placeholder="Surat dari ...">
                       </div>
 
                       <div class="form-group">
-                        <label class="pull-left">To</label>
-                        <input type="text" name="to" class="form-control" placeholder="Surat untuk ...">
+                        <label class="pull-left">Tujuan Surat</label>
+                        <input type="text" name="tujuan_surat" class="form-control" placeholder="Surat untuk ...">
+                      </div>
+
+                      <div class="form-group">
+                        <label class="pull-left">Perihal Surat</label>
+                        <input type="text" name="perihal" class="form-control" placeholder="jenis surat ...">
                       </div>
 
                       <div class="form-group">
                         <label class="pull-left">Jenis Surat</label>
-                        <input type="text" name="jenissurat" class="form-control" placeholder="jenis surat ...">
+                        <textarea class="form-control" name="jenis_surat" rows="5" placeholder="Deskripsi Surat ..."></textarea>
                       </div>
 
-                      <div class="form-group">
-                        <label class="pull-left">Document Description</label>
-                        <textarea class="form-control" name="deskripsisurat" rows="5" placeholder="Deskripsi Surat ..."></textarea>
+                       <div class="form-group">
+                        <label class="pull-left">Tanggal Masuk Surat</label>
+                        <input type="text" name="tanggal_masuk" class="form-control" placeholder="Surat dari ...">
+                      </div>
+
+                       <div class="form-group">
+                        <label class="pull-left">Tanggal Dibuat Surat</label>
+                        <input type="text" name="tanggal_dibuat" class="form-control" placeholder="Surat dari ...">
+                      </div>
+
+                       <div class="form-group">
+                        <label class="pull-left">Deskripsi Surat</label>
+                        <input type="text" name="deskripsi" class="form-control" placeholder="Surat dari ...">
+                      </div>
+
+                       <div class="form-group">
+                        <label class="pull-left">Nama Penerima Surat</label>
+                        <input type="text" name="nama_penerima" class="form-control" placeholder="Surat dari ...">
+                      </div>
+
+                       <div class="form-group">
+                        <label class="pull-left">No. Telepon Penerima Surat</label>
+                        <input type="text" name="telfon_penerima" class="form-control" placeholder="Surat dari ...">
+                      </div>
+
+                       <div class="form-group">
+                        <label class="pull-left">Email Penerima Surat</label>
+                        <input type="text" name="email_penerima" class="form-control" placeholder="Surat dari ...">
                       </div>
 
                       <br>
 
                       <div class="form-group">
-                        <h4>Receiver Description Form</h4>
-                        <label class="pull-left">Full Name</label>
+                        <h4>Uploader Description Form</h4>
+                        <label class="pull-left">Nama Pengunggah Surat</label>
                         <input type="text" name="name" class="form-control" value="{{Auth::User()->name}}" placeholder="Insert Your Full Name Here ...">
                       </div>
 
                       <div class="form-group">
-                        <label class="pull-left">Phone Number</label>
+                        <label class="pull-left">No. Telepon Pengunggah Surat</label>
                         <input type="number" name="phone" class="form-control" value="{{Auth::User()->no_telp}}" placeholder="Insert your Phone Number Here ...">
                       </div>
 
                       <div class="form-group">
-                        <label class="pull-left">Email</label>
+                        <label class="pull-left">Email Pengunggah Surat</label>
                         <input type="email" name="email" class="form-control" value="{{Auth::User()->email}}" placeholder="Insert your Email Here ...">
                       </div>
 
