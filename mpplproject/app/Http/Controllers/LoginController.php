@@ -17,6 +17,7 @@ class LoginController extends Controller {
 
     //check login input dari user
     function checklogin(Request $request) {
+    
     $this->validate($request, [
         'email'   => 'required|email',
         'password'  => 'required|alphaNum|min:3'
@@ -31,27 +32,18 @@ class LoginController extends Controller {
     if(Auth::attempt($user_data)) {
       //sukses redirect ke route success
       session()->put('key', '1');
-      return redirect('dashboard');
+      if(Auth::User()->hasRole('user')){
+        return redirect('dashboard/admin');
+      } else {
+        return redirect('dashboard/user');
+      };
 
-  } else {
+    } else {
       //kembali dengan error jika login detailnya error
       return back()->with('error', 'Wrong Login Details');
-  }
+    }
 
 }
-
-    function successlogin()
-    {
-        //ketika fungsi ini dipanggila maka session akan berjalan
-        //otomasis langusng di redirect ke dashboard
-        //session('key') bernilai 1
-        session()->put('key', '1');
-        if(Auth::User()->hasRole('user')){
-            return redirect('dashboard/user');
-        } else {
-            return redirect('admin_dashboard');
-      };
-    }
 
     function logout()
     {

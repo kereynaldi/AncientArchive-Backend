@@ -57,7 +57,7 @@
                     <div>
                         <label for="email" ><b>Email</b></label>
                         <br>
-                        <input name="email" type="text">
+                        <input name="email" type="email">
                     </div>
                     <div>
                         <label for="passoword" ><b>Password</b></label>

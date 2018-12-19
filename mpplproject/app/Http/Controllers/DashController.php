@@ -21,17 +21,18 @@ class DashController extends Controller
       }
   }
 
-  public function getAdmin()
+  public function getAdminApproval()
   {
-    if (( session('key') != null ) && (Auth::User()->hasRole('user'))){
-      return view('admin_dashboard');
+    if ( session('key') != null ){
+        $surats = Surat::all();
+        //dd($surats);
+        return view('admin_document-approval', compact('surats'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';
               </script>";
           return view('login');
       }
-
   }
 
   public function getUpload()
@@ -50,9 +51,9 @@ class DashController extends Controller
 
   public function getApproval()
   {
-
       if ( session('key') != null ){
         $surats = Surat::all();
+        //dd($surats);
         return view('document-approval', compact('surats'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');

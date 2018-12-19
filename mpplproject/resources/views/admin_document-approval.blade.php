@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin_app')
 
 @section('content')
 <!-- Content Header (Page header) -->
@@ -58,8 +58,8 @@
                       <td>{{$surat->created_at->format('d-m-Y') }}</td>
                       <td><span class="label label-info">Fresh</span></td>
                       <td>
-                        <!-- UNTUK MENGAJUKAN REVIEW KE ADMIN/ATASAN -->
-                        <button type="button" class="btn btn-sm btn-warning btn-flat" data-toggle="modal" data-target="#modal-warning">Review</button>
+                        <!-- MENGARSIPKAN SURAT -->
+                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
                       </td>
                     </tr>
                     @endforeach
@@ -87,7 +87,7 @@
 
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Review Progress</h3>
+              <h3 class="box-title">Review Waiting List</h3>
             </div>
             <!-- /.box-header -->
 
@@ -98,7 +98,7 @@
                   <tr>
                     <th>Document ID</th>
                     <th>Document Name</th>
-                    <th>Review Date</th>
+                    <th>Submit Date</th>
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
@@ -110,7 +110,8 @@
                       <td>12 December 2018</td>
                       <td><span class="label label-warning">Review</span></td>
                       <td>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-danger">Approved</button>
+                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Declined</button>
                       </td>
                     <tr>
                       <td><a href="../document-detail/document-detail.html">DA0004</a></td>
@@ -118,7 +119,8 @@
                       <td>12 December 2018</td>
                       <td><span class="label label-warning">Review</span></td>
                       <td>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-danger">Approved</button>
+                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Declined</button>
                       </td>
                     </tr>
                     <tr>
@@ -127,7 +129,8 @@
                       <td>02 December 2018</td>
                       <td><span class="label label-warning">Review</span></td>
                       <td>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-danger">Approved</button>
+                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Declined</button>
                       </td>
                     </tr>
                     <tr>
@@ -136,7 +139,8 @@
                       <td>23 November 2018</td>
                       <td><span class="label label-warning">Review</span></td>
                       <td>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-danger">Approved</button>
+                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Declined</button>
                       </td>
                     <tr>
                       <td><a href="../document-detail/document-detail.html">DA0001</a></td>
@@ -144,7 +148,8 @@
                       <td>29 October 2018</td>
                       <td><span class="label label-warning">Review</span></td>
                       <td>
-                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modal-danger">Approved</button>
+                        <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Declined</button>
                       </td>
                     </tr>
                   </tbody>
