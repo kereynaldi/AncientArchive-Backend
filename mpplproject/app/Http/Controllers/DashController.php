@@ -49,6 +49,12 @@ class DashController extends Controller
       }
   }
 
+  public function getReceived()
+  {
+    $surats = Surat::all();
+    return view('document-received', compact('surats'));
+  }
+
   public function getApproval()
   {
       if ( session('key') != null ){
