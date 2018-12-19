@@ -36,7 +36,7 @@ class UserController extends Controller
          'email'         => $request->input('email'),
          'jabatan'       => $request->input('jabatan'),
          'no_telp'       => $request->input('no_telp'),
-         'education'       => $request->input('education'),
+         'education'     => $request->input('education'),
          'ruangan'       => $request->input('ruangan'),
          'notes'       => $request->input('notes'),
      ]);
