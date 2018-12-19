@@ -54,12 +54,6 @@ class DashController extends Controller
 
   public function getApproval()
   {
-    $surats = Surat::all();
-    return view('document-received', compact('surats'));
-  }
-
-  public function getApproval()
-  {
       if ( session('key') != null ){
         //untuk nyambungin ke database surat
         $surats = Surat::all();
