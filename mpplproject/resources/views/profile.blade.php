@@ -18,7 +18,11 @@
       <!-- Profile Image -->
       <div class="box box-primary">
         <div class="box-body box-profile">
-          <img class="profile-user-img img-responsive img-circle" src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="User profile picture">
+          @if(auth()->user()->avatar)
+          <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="profile-user-img img-responsive img-circle" alt="User Image">
+          @else
+          <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="profile-user-img img-responsive img-circle" alt="User Image">
+          @endif
 
           <h3 class="profile-username text-center">{{Auth::User()->name}}</h3>
 
