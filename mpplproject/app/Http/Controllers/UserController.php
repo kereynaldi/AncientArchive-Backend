@@ -20,9 +20,8 @@ class UserController extends Controller
 
         } else {
             echo "<script type='text/javascript'>alert('Please login first to see this page!');
-                window.location = '/main';
-                </script>"; 
-            return view('login');
+                window.location = '/login';
+                </script>";
         }
   }
 

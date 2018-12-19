@@ -1,14 +1,11 @@
-<?php if(Auth::User()->hasRole('user')) {
-          "@extends('layouts.admin_app')";
-      } else { "@extends('layouts.app')"; } 
-?> 
+@extends('layouts.app')
 
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
     <i class="fa fa-folder"></i>
-    Archieved Document
+    Archived Document
   </h1>
 </section>
 

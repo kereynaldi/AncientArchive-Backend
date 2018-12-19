@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ancient Archive</title>
-
+  <?php if (Auth::User()->hasRole('user')) : ?>
+      <title>Ancient Archive High</title>
+  <?php else : ?>
+      <title>Ancient Archive</title>
+  <?php endif; ?>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -46,304 +49,614 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<?php if (Auth::User()->hasRole('user')) : ?>
+            
+            <body class="hold-transition skin-red sidebar-mini">
 
-  <!-- <div class="se-pre-con"></div> -->
+              <!-- <div class="se-pre-con"></div> -->
 
-  <!-- Section Start -->
+            <!-- Section Start -->
 
-  <!-- Site wrapper -->
-  <div class="wrapper">
+            <!-- Site wrapper -->
+            <div class="wrapper">
 
-    <!-- Navbar Start -->
+              <!-- Navbar Start -->
 
-    <header class="main-header">
+              <header class="main-header">
 
-      <!-- Logo -->
-      <a href="{{ url('/dashboard/user') }}" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>A</span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Ancient</b>Archive</span>
-      </a>
+                <!-- Logo -->
+                <a href="{{ url('/admin_dashboard') }}" class="logo">
+                  <!-- mini logo for sidebar mini 50x50 pixels -->
+                  <span class="logo-mini"><b>AA</b>H</span>
+                  <!-- logo for regular state and mobile devices -->
+                  <span class="logo-lg"><b>AncientArchive</b>High</span>
+                </a>
 
-      <!-- Header Navbar: style can be found in header.less -->
-      <nav class="navbar navbar-static-top">
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top">
 
-        <!-- Sidebar toggle button -->
-        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
+                  <!-- Sidebar toggle button -->
+                  <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </a>
 
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
+                  <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
 
-            <!-- Messages: style can be found in dropdown.less-->
-            <li class="dropdown messages-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-envelope-o"></i>
-                <span class="label label-success">1</span>
+                      <!-- Messages: style can be found in dropdown.less-->
+                      <li class="dropdown messages-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <i class="fa fa-envelope-o"></i>
+                          <span class="label label-success">1</span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                          <li class="header">You have 1 messages</li>
+                          <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+                              <li><!-- start message -->
+                                <a href="#">
+                                  <div class="pull-left">
+                                    @if(auth()->user()->avatar)
+                                    <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
+                                    @else
+                                    <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
+                                    @endif
+                                  </div>
+                                  <h4>
+                                    {{Auth::User()->name}}
+                                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                  </h4>
+                                  <p>Please Review your event background</p>
+                                </a>
+                              </li>
+                              <!-- end message -->
+                            </ul>
+                          </li>
+                          <li class="footer"><a href="#">See All Messages</a></li>
+                        </ul>
+                      </li>
+
+                      <!-- Notifications: style can be found in dropdown.less -->
+                      <li class="dropdown notifications-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <i class="fa fa-bell-o"></i>
+                          <span class="label label-warning">3</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li class="header">You have 3 notifications</li>
+                          <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+                              <li>
+                                <a href="#">
+                                  <i class="fa fa-thumbs-up text-success"></i> 2 Event Proposal Approved
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <i class="fa fa-thumbs-down text-danger"></i> 1 Event Proposal Declined
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li class="footer"><a href="#">View all</a></li>
+                        </ul>
+                      </li>
+
+                      <!-- User Account: style can be found in dropdown.less -->
+                      <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <!-- profile picture default & update-->
+                          @if(auth()->user()->avatar)
+                          <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="user-image" alt="User Image">
+                          @else
+                          <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="user-image" alt="User Image">
+                          @endif
+                          <span class="hidden-xs">{{Auth::User()->name}}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <!-- User image -->
+                          <li class="user-header">
+                            <!-- profile picture default & update-->
+                            @if(auth()->user()->avatar)
+                            <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
+                            @else
+                            <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
+                            @endif
+
+                            <p>
+                              {{Auth::User()->name}} - {{Auth::User()->jabatan}}
+                              <small>Member since September 28, 2018</small>
+                            </p>
+                          </li>
+
+                          <!-- Menu Footer-->
+                          <li class="user-footer">
+                            <div class="pull-left">
+                              <a href="{{ url('/profile') }}" class="btn btn-default btn-flat">Profile</a>
+                            </div>
+                            <div class="pull-right">
+                              <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+
+              </header>
+
+              <!-- Navbar End -->
+
+              <!-- =============================================== -->
+
+              <!-- Main Menu Start -->
+
+              <!-- Left side column. contains the sidebar -->
+              <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                  <!-- Sidebar user panel -->
+                  <div class="user-panel">
+                    <div class="pull-left image">
+                      <!-- profile picture default & update-->
+                      @if(auth()->user()->avatar)
+                      <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
+                      @else
+                      <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
+                      @endif
+                    </div>
+                    <div class="pull-left info">
+                      <br>
+                      <p>{{Auth::User()->name}}</p>
+                    </div>
+                  </div>
+                  <!-- search form -->
+                  <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                      <input type="text" name="q" class="form-control" placeholder="Search...">
+                      <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                            </button>
+                          </span>
+                    </div>
+                  </form>
+                  <!-- /.search form -->
+
+                  <!-- sidebar menu: : style can be found in sidebar.less -->
+
+                  <ul class="sidebar-menu" data-widget="tree">
+
+                    <li class="header">MAIN MENU</li>
+                    <li>
+                      <a href="{{ url('/dashboard/admin') }}">
+                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{{ url('/upload') }}">
+                        <i class="fa fa-upload"></i> <span>Upload Document</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{{ url('/admin_document_approval') }}">
+                        <i class="fa fa-file-text"></i> <span>Document Approval</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{{ url('/document_archived') }}">
+                        <i class="fa fa-folder"></i> <span>Archived Document</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{{ url('/recent_activity') }}">
+                        <i class="fa fa-exchange"></i> <span>Recent Activity</span>
+                      </a>
+                    </li>
+
+                  </ul>
+
+                </section>
+                <!-- /.sidebar -->
+              </aside>
+
+              <!-- Main Menu End -->
+              <!-- =============================================== -->
+
+              <!-- Content Start -->
+
+              <!-- Content Wrapper. Contains page content -->
+              <div class="content-wrapper">
+                @yield('content')
+              </div>
+              <!-- /.content-wrapper -->
+
+              <!-- Content End -->
+
+              <!-- =============================================== -->
+
+            </div>
+
+            <!-- ./wrapper -->
+
+            <!-- Section End -->
+
+            <!-- =============================================== -->
+
+            <!-- Script Start -->
+
+            <!-- jQuery 3 -->
+            <script src="{{ asset('beranda/bower_components/jquery/dist/jquery.min.js') }}"></script>
+
+            <!-- Bootstrap 3.3.7 -->
+            <script src="{{ asset('beranda/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+            <!-- SlimScroll -->
+            <script src="{{ asset('beranda/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+
+            <!-- FastClick -->
+            <script src="{{ asset('beranda/bower_components/fastclick/lib/fastclick.js') }}"></script>
+
+            <!-- DataTables -->
+            <script src="{{ asset('beranda/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+            <script src="{{ asset('beranda/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+
+            <!-- AdminLTE App -->
+            <script src="{{ asset('beranda/dist/js/adminlte.min.js') }}"></script>
+
+            <script>
+              $(document).ready(function () {
+                $('.sidebar-menu').tree()
+              })
+            </script>
+
+            <!-- JQuery -->
+            <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script> -->
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+            <!-- ChartJS -->
+            <script src="{{ asset('beranda/bower_components/chart.js/Chart.js') }}"></script>
+
+            <!-- Chart Javascript Graphic Animation-->
+            <script src="{{ asset('beranda/dist/js/pages/dashboard2.js') }}"></script>
+
+            <!-- Loading Screen Animation -->
+
+            <script>
+                $(window).load(function() {
+                    $(".se-pre-con").fadeOut("slow");;
+                });
+            </script>
+
+            <!-- page script Document-approval-->
+            <script>
+              $(function () {
+                $('#example1').DataTable()
+                $('#example2').DataTable()
+                $('#example3').DataTable()
+                $('#example4').DataTable()
+              })
+            </script>
+            <script src="{{ asset('beranda/upload-file.js') }}"></script>
+            <!-- Script End -->
+
+          </body>
+          </html>
+
+
+<?php else : ?>
+
+          <body class="hold-transition skin-blue sidebar-mini">
+
+
+          <!-- <div class="se-pre-con"></div> -->
+
+          <!-- Section Start -->
+
+          <!-- Site wrapper -->
+          <div class="wrapper">
+
+            <!-- Navbar Start -->
+
+            <header class="main-header">
+
+              <!-- Logo -->
+              <a href="{{ url('/dashboard/user') }}" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>A</b>A</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Ancient</b>Archive</span>
               </a>
 
-              <ul class="dropdown-menu">
-                <li class="header">You have 1 messages</li>
-                <li>
-                  <!-- inner menu: contains the actual data -->
-                  <ul class="menu">
-                    <li><!-- start message -->
-                      <a href="#">
-                        <div class="pull-left">
+              <!-- Header Navbar: style can be found in header.less -->
+              <nav class="navbar navbar-static-top">
+
+                <!-- Sidebar toggle button -->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </a>
+
+                <div class="navbar-custom-menu">
+                  <ul class="nav navbar-nav">
+
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <li class="dropdown messages-menu">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="label label-success">1</span>
+                      </a>
+
+                      <ul class="dropdown-menu">
+                        <li class="header">You have 1 messages</li>
+                        <li>
+                          <!-- inner menu: contains the actual data -->
+                          <ul class="menu">
+                            <li><!-- start message -->
+                              <a href="#">
+                                <div class="pull-left">
+                                  @if(auth()->user()->avatar)
+                                  <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
+                                  @else
+                                  <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
+                                  @endif
+                                </div>
+                                <h4>
+                                  {{Auth::User()->name}}
+                                  <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                </h4>
+                                <p>Please Review your event background</p>
+                              </a>
+                            </li>
+                            <!-- end message -->
+                          </ul>
+                        </li>
+                        <li class="footer"><a href="#">See All Messages</a></li>
+                      </ul>
+                    </li>
+
+                    <!-- Notifications: style can be found in dropdown.less -->
+                    <li class="dropdown notifications-menu">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning">3</span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li class="header">You have 3 notifications</li>
+                        <li>
+                          <!-- inner menu: contains the actual data -->
+                          <ul class="menu">
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-thumbs-up text-success"></i> 2 Event Proposal Approved
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-thumbs-down text-danger"></i> 1 Event Proposal Declined
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li class="footer"><a href="#">View all</a></li>
+                      </ul>
+                    </li>
+
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <!-- profile picture default & update-->
+                        @if(auth()->user()->avatar)
+                        <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="user-image" alt="User Image">
+                        @else
+                        <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="user-image" alt="User Image">
+                        @endif
+                        <span class="hidden-xs">{{Auth::User()->name}}</span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                          <!-- profile picture default & update-->
                           @if(auth()->user()->avatar)
                           <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
                           @else
                           <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
                           @endif
-                        </div>
-                        <h4>
-                          {{Auth::User()->name}}
-                          <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                        </h4>
-                        <p>Please Review your event background</p>
-                      </a>
-                    </li>
-                    <!-- end message -->
-                  </ul>
-                </li>
-                <li class="footer"><a href="#">See All Messages</a></li>
-              </ul>
-            </li>
 
-            <!-- Notifications: style can be found in dropdown.less -->
-            <li class="dropdown notifications-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-bell-o"></i>
-                <span class="label label-warning">3</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have 3 notifications</li>
-                <li>
-                  <!-- inner menu: contains the actual data -->
-                  <ul class="menu">
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-thumbs-up text-success"></i> 2 Event Proposal Approved
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-thumbs-down text-danger"></i> 1 Event Proposal Declined
-                      </a>
+                          <p>
+                            {{Auth::User()->name}} - {{Auth::User()->jabatan}}
+                            <small>Member since September 28, 2018</small>
+                          </p>
+                        </li>
+
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                          <div class="pull-left">
+                            <a href="{{ url('/profile') }}" class="btn btn-default btn-flat">Profile</a>
+                          </div>
+                          <div class="pull-right">
+                            <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                          </div>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
-                </li>
-                <li class="footer"><a href="#">View all</a></li>
-              </ul>
-            </li>
+                </div>
+              </nav>
 
-            <!-- User Account: style can be found in dropdown.less -->
-            <li class="dropdown user user-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <!-- profile picture default & update-->
-                @if(auth()->user()->avatar)
-                <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="user-image" alt="User Image">
-                @else
-                <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="user-image" alt="User Image">
-                @endif
-                <span class="hidden-xs">{{Auth::User()->name}}</span>
-              </a>
-              <ul class="dropdown-menu">
-                <!-- User image -->
-                <li class="user-header">
-                  <!-- profile picture default & update-->
-                  @if(auth()->user()->avatar)
-                  <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
-                  @else
-                  <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
-                  @endif
+            </header>
 
-                  <p>
-                    {{Auth::User()->name}} - {{Auth::User()->jabatan}}
-                    <small>Member since September 28, 2018</small>
-                  </p>
-                </li>
+            <!-- Navbar End -->
 
-                <!-- Menu Footer-->
-                <li class="user-footer">
-                  <div class="pull-left">
-                    <a href="{{ url('/profile') }}" class="btn btn-default btn-flat">Profile</a>
+            <!-- =============================================== -->
+
+            <!-- Main Menu Start -->
+
+            <!-- Left side column. contains the sidebar -->
+            <aside class="main-sidebar">
+              <!-- sidebar: style can be found in sidebar.less -->
+              <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                  <div class="pull-left image">
+                    <!-- profile picture default & update-->
+                    @if(auth()->user()->avatar)
+                    <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
+                    @else
+                    <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
+                    @endif
                   </div>
-                  <div class="pull-right">
-                    <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                  <div class="pull-left info">
+                    <br>
+                    <p>{{Auth::User()->name}}</p>
                   </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </nav>
+                </div>
+                <!-- search form -->
+                <form action="#" method="get" class="sidebar-form">
+                  <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                          </button>
+                        </span>
+                  </div>
+                </form>
+                <!-- /.search form -->
 
-    </header>
+                <!-- sidebar menu: : style can be found in sidebar.less -->
 
-    <!-- Navbar End -->
+                <ul class="sidebar-menu" data-widget="tree">
 
-    <!-- =============================================== -->
+                  <li class="header">MAIN MENU</li>
+                  <li>
+                    <a href="{{ url('/dashboard/user') }}">
+                      <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    </a>
+                  </li>
 
-    <!-- Main Menu Start -->
+                  <li>
+                    <a href="{{ url('/upload') }}">
+                      <i class="fa fa-upload"></i> <span>Upload Document</span>
+                    </a>
+                  </li>
 
-    <!-- Left side column. contains the sidebar -->
-    <aside class="main-sidebar">
-      <!-- sidebar: style can be found in sidebar.less -->
-      <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-          <div class="pull-left image">
-            <!-- profile picture default & update-->
-            @if(auth()->user()->avatar)
-            <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
-            @else
-            <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
-            @endif
+                  <li>
+                    <a href="{{ url('/document_approval') }}">
+                      <i class="fa fa-file-text"></i> <span>Document Approval</span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="{{ url('/document_archived') }}">
+                      <i class="fa fa-folder"></i> <span>Archived Document</span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="{{ url('/recent_activity') }}">
+                      <i class="fa fa-exchange"></i> <span>Recent Activity</span>
+                    </a>
+                  </li>
+
+                </ul>
+
+              </section>
+              <!-- /.sidebar -->
+            </aside>
+
+            <!-- Main Menu End -->
+            <!-- =============================================== -->
+
+            <!-- Content Start -->
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+              @yield('content')
+            </div>
+            <!-- /.content-wrapper -->
+
+            <!-- Content End -->
+
+            <!-- =============================================== -->
+
           </div>
-          <div class="pull-left info">
-            <br>
-            <p>{{Auth::User()->name}}</p>
-          </div>
-        </div>
-        <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
-          <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="Search...">
-            <span class="input-group-btn">
-                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                  </button>
-                </span>
-          </div>
-        </form>
-        <!-- /.search form -->
 
-        <!-- sidebar menu: : style can be found in sidebar.less -->
+          <!-- ./wrapper -->
 
-        <ul class="sidebar-menu" data-widget="tree">
+          <!-- Section End -->
 
-          <li class="header">MAIN MENU</li>
-          <li>
-            <a href="{{ url('/dashboard/user') }}">
-              <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            </a>
-          </li>
+          <!-- =============================================== -->
 
-          <li>
-            <a href="{{ url('/upload') }}">
-              <i class="fa fa-upload"></i> <span>Upload Document</span>
-            </a>
-          </li>
+          <!-- Script Start -->
 
-          <li>
-            <a href="{{ url('/document_approval') }}">
-              <i class="fa fa-file-text"></i> <span>Document Approval</span>
-            </a>
-          </li>
+          <!-- jQuery 3 -->
+          <script src="{{ asset('beranda/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
-          <li>
-            <a href="{{ url('/document_archived') }}">
-              <i class="fa fa-folder"></i> <span>Archived Document</span>
-            </a>
-          </li>
+          <!-- Bootstrap 3.3.7 -->
+          <script src="{{ asset('beranda/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
-          <li>
-            <a href="{{ url('/recent_activity') }}">
-              <i class="fa fa-exchange"></i> <span>Recent Activity</span>
-            </a>
-          </li>
+          <!-- SlimScroll -->
+          <script src="{{ asset('beranda/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 
-        </ul>
+          <!-- FastClick -->
+          <script src="{{ asset('beranda/bower_components/fastclick/lib/fastclick.js') }}"></script>
 
-      </section>
-      <!-- /.sidebar -->
-    </aside>
+          <!-- DataTables -->
+          <script src="{{ asset('beranda/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+          <script src="{{ asset('beranda/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 
-    <!-- Main Menu End -->
-    <!-- =============================================== -->
+          <!-- AdminLTE App -->
+          <script src="{{ asset('beranda/dist/js/adminlte.min.js') }}"></script>
 
-    <!-- Content Start -->
+          <script>
+            $(document).ready(function () {
+              $('.sidebar-menu').tree()
+            })
+          </script>
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      @yield('content')
-    </div>
-    <!-- /.content-wrapper -->
+          <!-- JQuery -->
+          <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script> -->
+          <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 
-    <!-- Content End -->
+          <!-- ChartJS -->
+          <script src="{{ asset('beranda/bower_components/chart.js/Chart.js') }}"></script>
 
-    <!-- =============================================== -->
+          <!-- Chart Javascript Graphic Animation-->
+          <script src="{{ asset('beranda/dist/js/pages/dashboard2.js') }}"></script>
 
-  </div>
+          <!-- Loading Screen Animation -->
 
-  <!-- ./wrapper -->
+          <script>
+              $(window).load(function() {
+                  $(".se-pre-con").fadeOut("slow");;
+              });
+          </script>
 
-  <!-- Section End -->
+          <!-- page script Document-approval-->
+          <script>
+            $(function () {
+              $('#example1').DataTable()
+              $('#example2').DataTable()
+              $('#example3').DataTable()
+              $('#example4').DataTable()
+            })
+          </script>
+          <script src="{{ asset('beranda/upload-file.js') }}"></script>
+          <!-- Script End -->
 
-  <!-- =============================================== -->
+        </body>
+        </html>
 
-  <!-- Script Start -->
-
-  <!-- jQuery 3 -->
-  <script src="{{ asset('beranda/bower_components/jquery/dist/jquery.min.js') }}"></script>
-
-  <!-- Bootstrap 3.3.7 -->
-  <script src="{{ asset('beranda/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-
-  <!-- SlimScroll -->
-  <script src="{{ asset('beranda/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-
-  <!-- FastClick -->
-  <script src="{{ asset('beranda/bower_components/fastclick/lib/fastclick.js') }}"></script>
-
-  <!-- DataTables -->
-  <script src="{{ asset('beranda/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('beranda/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-
-  <!-- AdminLTE App -->
-  <script src="{{ asset('beranda/dist/js/adminlte.min.js') }}"></script>
-
-  <script>
-    $(document).ready(function () {
-      $('.sidebar-menu').tree()
-    })
-  </script>
-
-  <!-- JQuery -->
-  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script> -->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-
-  <!-- ChartJS -->
-  <script src="{{ asset('beranda/bower_components/chart.js/Chart.js') }}"></script>
-
-  <!-- Chart Javascript Graphic Animation-->
-  <script src="{{ asset('beranda/dist/js/pages/dashboard2.js') }}"></script>
-
-  <!-- Loading Screen Animation -->
-
-  <script>
-      $(window).load(function() {
-          $(".se-pre-con").fadeOut("slow");;
-      });
-  </script>
-
-  <!-- page script Document-approval-->
-  <script>
-    $(function () {
-      $('#example1').DataTable()
-      $('#example2').DataTable()
-      $('#example3').DataTable()
-      $('#example4').DataTable()
-    })
-  </script>
-  <script src="{{ asset('beranda/upload-file.js') }}"></script>
-  <!-- Script End -->
-
-</body>
-</html>
+<?php endif; ?>

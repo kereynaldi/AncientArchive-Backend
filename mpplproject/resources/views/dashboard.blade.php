@@ -1,8 +1,4 @@
-<?php if(Auth::User()->hasRole('user')) {
-          "@extends('layouts.admin_app')";
-      } else { "@extends('layouts.app')"; } 
-?> 
-<!-- @extends('layouts.admin_app') -->
+@extends('layouts.app')
 
       <!-- Content Header (Page header) -->
       @section('content')
