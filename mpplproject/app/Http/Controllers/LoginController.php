@@ -32,7 +32,7 @@ class LoginController extends Controller {
     if(Auth::attempt($user_data)) {
       //sukses redirect ke route success
       session()->put('key', '1');
-      if(Auth::User()->hasRole('user')){
+      if(Auth::User()->hasRole('admin')){
         return redirect('dashboard/admin');
       } else {
         return redirect('dashboard/user');

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <?php if (Auth::User()->hasRole('user')) : ?>
+  <?php if (Auth::User()->hasRole('admin')) : ?>
       <title>Ancient Archive High</title>
   <?php else : ?>
       <title>Ancient Archive</title>
@@ -49,7 +49,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<?php if (Auth::User()->hasRole('user')) : ?>
+<?php if (Auth::User()->hasRole('admin')) : ?>
             
             <body class="hold-transition skin-red sidebar-mini">
 

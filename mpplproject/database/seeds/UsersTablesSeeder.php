@@ -14,14 +14,14 @@ class UsersTablesSeeder extends Seeder
     public function run()
     {
       $user = User::create([
-        'NIP' => '00011000',
-        'name' => 'John Smith',
-        'email' => 'john_smith@gmail.com',
-        'password' => Hash::make('password'),
-        'jabatan' => 'Pegawai',
+        'NIP' => '88888889',
+        'name' => 'Monkey D. Garp',
+        'email' => 'garp@gmail.com',
+        'password' => Hash::make('godblessindonesia'),
+        'jabatan' => 'Vice Admiral',
         'no_telp' => '08121223778',
       ]);
-      $user->assignRole('admin');
+      $user->assignRole('user');
       $user->save();
     }
 }

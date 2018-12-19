@@ -25,6 +25,7 @@
 
     <div class="box-body">
       <ul class="products-list product-list-in-box">
+
         <li class="item">
           <div class="product-img">
             <img src="{{ asset('beranda/dist/img/kevin.jpg') }}" class="img-circle" alt="Product Image">
@@ -37,45 +38,26 @@
                 </span>
           </div>
         </li>
-        <!-- /.item -->
-        <li class="item">
-          <div class="product-img">
-            <img src="{{ asset('beranda/dist/img/Rakish.jpg') }}" class="img-circle" alt="Product Image">
-          </div>
-          <div class="product-info">
-            <a href="javascript:void(0)" class="product-title">Permohonan Pengajuan Dana PMW
-                <span class="label label-success pull-right">Approved</span></a>
-                <span class="product-description">
-                  Changed Document Status from <b>Review</b> to <b>Approved</b>
-                </span>
-          </div>
-        </li>
-        <!-- /.item -->
-        <li class="item">
-          <div class="product-img">
-            <img src="{{ asset('beranda/dist/img/Rakish.jpg') }}" class="img-circle" alt="Product Image">
-          </div>
-          <div class="product-info">
-            <a href="javascript:void(0)" class="product-title">Pengajuan Permintaan Kenaikan Pangkat
-              <span class="label label-danger pull-right">Declined</span></a>
-              <span class="product-description">
-                Changed Document Status from <b>Review</b> to <b>Declined</b>
-              </span>
-          </div>
-        </li>
-        <!-- /.item -->
-        <li class="item">
-          <div class="product-img">
-            <img src="{{ asset('beranda/dist/img/kevin.jpg') }}" class="img-circle" alt="Product Image">
-          </div>
-          <div class="product-info">
-            <a href="javascript:void(0)" class="product-title">Permohonan Pengajuan Cuti 3 Hari
-              <span class="label label-primary pull-right">Archieve</span></a>
-              <span class="product-description">
-                  Changed Document Status From <b>Approved</b> to <b>Archieve</b>
-                </span>
-          </div>
-        </li>
+
+        @if($surats->count() !== 0)
+          @foreach($surats as $surat)
+            <li class="item">
+              <div class="product-img">
+                <img src="{{ asset('beranda/dist/img/kevin.jpg') }}" class="img-circle" alt="Product Image">
+              </div>
+              <div class="product-info">
+                <a href="javascript:void(0)" class="product-title">{{$surat->perihal}}
+                    <span class="label label-warning pull-right">{{$surat->status}}</span></a>
+                    <span class="product-description">
+                      Changed Document Status from <b>Fresh</b> to <b>{{$surat->status}}</b>
+                    </span>
+              </div>
+            </li>
+          @endforeach
+        @else
+            <tr><td>Tidak ada surat masuk</td></tr>
+        @endif
+
         <!-- /.item -->
       </ul>
     </div>

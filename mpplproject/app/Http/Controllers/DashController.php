@@ -22,9 +22,8 @@ class DashController extends Controller
 
   public function getAdminApproval()
   {
-    if ( session('key') != null ){
+    if ( (session('key') != null) && (Auth::User()->hasRole('admin')) ){
         $surats = Surat::all();
-        //dd($surats);
         return view('admin_document-approval', compact('surats'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
@@ -55,8 +54,8 @@ class DashController extends Controller
   public function getApproval()
   {
       if ( session('key') != null ){
+        //untuk nyambungin ke database surat
         $surats = Surat::all();
-        //dd($surats);
         return view('document-approval', compact('surats'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
@@ -79,7 +78,8 @@ class DashController extends Controller
   public function getActivity()
   {
       if ( session('key') != null ){
-      return view('recent-activity');
+      $surats = Surat::all();
+      return view('recent-activity', compact('surats'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';
