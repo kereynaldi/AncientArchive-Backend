@@ -56,6 +56,10 @@ Route::get('/document_received', 'DashController@getReceived')->name('document_r
 //ROUTE SURAT
 Route::get('/status/reviewed/{id}', 'SuratController@reviewedStatus');
 Route::get('/status/cancel/{id}', 'SuratController@cancelStatus');
+Route::get('/document_detail/{$id}', 'SuratController@getDetail')->name('document_detail');
+
+//ROUTE API NOTIF
+Route::get('/document_received', 'DashController@getReceived')->name('document_received');
 Route::get('/status/approved/{id}', 'SuratController@approvedStatus');
 Route::get('/status/archived/{id}', 'SuratController@archivedStatus');
 Route::get('/status/declined/{id}', 'SuratController@declinedStatus');
