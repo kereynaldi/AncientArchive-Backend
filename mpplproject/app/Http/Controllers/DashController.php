@@ -17,7 +17,6 @@ class DashController extends Controller
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';
               </script>";
-          return view('login');
       }
   }
 
@@ -31,7 +30,6 @@ class DashController extends Controller
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';
               </script>";
-          return view('login');
       }
   }
 
@@ -45,7 +43,6 @@ class DashController extends Controller
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';
               </script>";
-          return view('login');
       }
   }
 
@@ -65,7 +62,6 @@ class DashController extends Controller
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';
               </script>";
-          return view('login');
       }
   }
 
@@ -77,7 +73,6 @@ class DashController extends Controller
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';
               </script>";
-          return view('login');
       }
   }
 
@@ -89,7 +84,6 @@ class DashController extends Controller
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';
               </script>";
-          return view('login');
       }
   }
 
