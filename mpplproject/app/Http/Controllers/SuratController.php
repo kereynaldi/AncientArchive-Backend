@@ -45,7 +45,7 @@ class SuratController extends Controller
           'idpenerima' => $user->id,
       ]);
       //redirect home
-        return redirect()->route('dashboard');
+        return redirect()->route('document_approval');
     }
 
     public function getDetail($id)

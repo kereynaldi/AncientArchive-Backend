@@ -29,27 +29,35 @@
 
   <!-- info row -->
   <div class="row invoice-info">
-    <div class="col-sm-4 invoice-col">
+    <div class="col-sm-3 invoice-col">
       From
       <address>
-        <strong>{{$suratt->asalsurat}}</strong><br>
-        Phone: (804) 123-5432<br>
-        Email: {{$suratt->pengunggah->email}}
+        <strong>{{$suratt->asal_surat}}</strong><br>
+        <strong>Email:</strong> {{$suratt->pengunggah->email}}
       </address>
     </div>
     <!-- /.col -->
-    <div class="col-sm-4 invoice-col">
+    <div class="col-sm-3 invoice-col">
       To
       <address>
-        <strong>Rakish F</strong><br>
-        Phone: (555) 539-1037<br>
-        Email: rafik@gmail.com
+        <strong>{{$suratt->tujuan_surat}}</strong><br>
+        <strong>Jenis:</strong> {{$suratt->jenis_surat}}<br>
       </address>
     </div>
     <!-- /.col -->
-    <div class="col-sm-4 invoice-col">
-      <b>Document ID:</b> {{$suratt->id}}<br>
-      <b>Created Date:</b> 12 December 2018<br>
+    <div class="col-sm-3 invoice-col">
+      Penerima
+      <address>
+        <strong>{{$suratt->nama_penerima}}</strong><br>
+        <strong>Phone:</strong> {{$suratt->telfon_penerima}}<br>
+        <strong>Email:</strong> {{$suratt->email_penerima}}
+      </address>
+    </div>
+    <!-- /.col -->
+    <div class="col-sm-3 invoice-col">
+      <strong>ID Dokumen:</strong> {{$suratt->id}}<br>
+      <strong>Tanggal Surat Dibuat:</strong> {{$suratt->tanggal_dibuat}}<br>
+      <strong>Tanggal Surat Masuk:</strong> {{$suratt->tanggal_masuk}}<br>
     </div>
     <!-- /.col -->
   </div>
@@ -58,18 +66,33 @@
   <!-- info row -->
   <div class="row invoice-info">
     <div class="col-md-12 invoice-col">
+      <b>No. Surat :</b>
+      <br>
+      <address>
+        {{$suratt->no_surat}}
+      </address>
+    </div>
+    <div class="col-md-12 invoice-col">
+      <b>Perihal :</b>
+      <br>
+      <address>
+        {{$suratt->perihal}}
+      </address>
+    </div>
+    <div class="col-md-12 invoice-col">
       <b>Description :</b>
       <br>
       <address>
-        Surat ini ditujukan untuk pengajuan ruangan Common Class Room untuk kegiatan Acara Pekan Science Nasional yang akan diadakan pada 24 December 2018.
+        {{$suratt->deskripsi}}
       </address>
     </div>
   </div>
   <!-- /.row -->
-
-  <!-- Download Button -->
+  <hr>
+  <!-- Download & Download Button -->
   <div class="row no-print">
     <div class="col-xs-12">
+    <a href="{{ url('/editsurat/' . $suratt->id) }}" target="_blank" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
       <a href="#" target="_blank" class="btn btn-success pull-right"><i class="fa fa-download"></i> Download</a>
     </div>
   </div>
