@@ -60,4 +60,17 @@ class SuratController extends Controller
             return view('login');
         }
     }
+
+    public function getEdit($id)
+    {
+        if ( session('key') != null ){
+          $suratt = Surat::find($id);
+          return view('edit-document', compact('suratt'));
+        } else {
+            echo "<script type='text/javascript'>alert('Please login first to see this page!');
+                window.location = '/login';
+                </script>";
+            return view('login');
+        }
+    }
 }
