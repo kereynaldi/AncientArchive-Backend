@@ -41,7 +41,7 @@ class SuratController extends Controller
           'nama_penerima' => $request->nama_penerima,
           'telfon_penerima' => $request->telfon_penerima,
           'email_penerima' => $request->email_penerima,
-          'Status' => 1,
+          'Status' => NULL,
           'idpenerima' => $user->id,
       ]);
       //redirect home

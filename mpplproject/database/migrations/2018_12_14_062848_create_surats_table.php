@@ -27,7 +27,7 @@ class CreateSuratsTable extends Migration
             $table->string('nama_penerima');
             $table->string('telfon_penerima');
             $table->string('email_penerima');
-            $table->unsignedTinyInteger('Status');
+            $table->unsignedTinyInteger('Status')->nullable();
             $table->timestamps();
             $table->unsignedInteger('idpenerima')->nullable();
             $table->foreign('idpenerima')->references('id')->on('users');
