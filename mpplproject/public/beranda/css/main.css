@@ -16,15 +16,15 @@ body{
     overflow: hidden;
 }
 
-.no-js #loader { 
-    display: none;  
+.no-js #loader {
+    display: none;
 }
 
-.js #loader { 
-    display: block; 
-    position: absolute; 
-    left: 100px; 
-    top: 0; 
+.js #loader {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 0;
 }
 
 .se-pre-con {
@@ -89,7 +89,7 @@ body{
 
 .container-body p{
     font-size: 2em;
-    padding-right: 20vw;
+    padding-right: 30vw;
     margin-top: -10vh;
      /*background-color: black; */
 }
@@ -102,5 +102,5 @@ body{
         padding-right: 20vw;
         margin-top: -10vh;
         background-color: black; */
-    }    
+    }
 }
