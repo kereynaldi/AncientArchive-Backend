@@ -14,6 +14,7 @@ RUN export COMPOSER_ALLOW_SUPERUSER=1; composer install
 RUN /etc/init.d/mysql start && mysql -e "CREATE DATABASE mpplproject"
 RUN composer update
 RUN composer require doctrine/dbal
+RUN composer require spatie/laravel-permission
 
 #CMD apachectl -D FOREGROUND
 CMD service mysql restart
