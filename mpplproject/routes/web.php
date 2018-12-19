@@ -34,6 +34,8 @@ Route::get('/dashboard/admin', 'DashController@index')->name('admin_dashboard');
 Route::get('/document_approval', 'DashController@getApproval')->name('document_approval'); //approval biru
 Route::get('/admin_document_approval','DashController@getAdminApproval')->name('admin_document_approval'); //approval merah
 
+Route::get('/document_detail/{id}', 'SuratController@getDetail');
+
 Route::get('/document_archived', 'DashController@getArchived')->name('document_archived');
 
 Route::get('/recent_activity', 'DashController@getActivity')->name('recent_activity');
