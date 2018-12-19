@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ancient Archive</title>
+  <title>Ancient Archive High</title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -62,9 +62,9 @@
       <!-- Logo -->
       <a href="{{ url('/admin_dashboard') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>A</span>
+        <span class="logo-mini"><b>AA</b>H</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Ancient</b>Archive</span>
+        <span class="logo-lg"><b>AncientArchive</b>High</span>
       </a>
 
       <!-- Header Navbar: style can be found in header.less -->
@@ -230,7 +230,7 @@
 
           <li class="header">MAIN MENU</li>
           <li>
-            <a href="{{ url('/admin_dashboard') }}">
+            <a href="{{ url('/dashboard/admin') }}">
               <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
           </li>
@@ -242,7 +242,7 @@
           </li>
 
           <li>
-            <a href="{{ url('/document_approval') }}">
+            <a href="{{ url('/admin_document_approval') }}">
               <i class="fa fa-file-text"></i> <span>Document Approval</span>
             </a>
           </li>
