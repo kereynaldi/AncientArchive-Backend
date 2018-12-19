@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Session;
+use Exception;
 
 class RegisterController extends Controller
 {
@@ -21,22 +22,22 @@ class RegisterController extends Controller
 
     public function PostRegister(Request $request)
     {
-      //authenticating users
-      // $this->validate($request, [
-      //   'NIP' => 'required|min:5',
-      //   'name' => 'required|min:4',
-      //   'email' => 'required|email|unique:users',
-      //   'password' => 'required|min:6',
-      // ]);
-
-      $user = User::create([
-        'NIP' => $request->NIP,
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => bcrypt($request->password)
-      ]);
-      $user->assignRole('user');
-      //redirect home
+      try{
+        $user = User::create([
+          'NIP' => $request->NIP,
+          'name' => $request->name,
+          'email' => $request->email,
+          'password' => bcrypt($request->password)
+        ]);
+        $user->assignRole('user');
+        //redirect home
         return redirect('/login');
+      }
+      catch (Exception $e){
+        $error_code = $e->errorInfo[1];
+        if($error_code == 1062){
+            return "Seems like this account has been registered before !";
+        }
+      }
     }
 }
