@@ -21,6 +21,19 @@ class DashController extends Controller
       }
   }
 
+  public function getAdmin()
+  {
+    if (( session('key') != null ) && (Auth::User()->hasRole('user'))){
+      return view('admin_dashboard');
+      } else {
+          echo "<script type='text/javascript'>alert('Please login first to see this page!');
+              window.location = '/login';
+              </script>";
+          return view('login');
+      }
+
+  }
+
   public function getUpload()
   {
       if ( session('key') != null ){

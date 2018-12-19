@@ -32,6 +32,7 @@ class LoginController extends Controller {
       //sukses redirect ke route success
       session()->put('key', '1');
       return redirect('dashboard');
+
   } else {
       //kembali dengan error jika login detailnya error
       return back()->with('error', 'Wrong Login Details');
@@ -45,7 +46,11 @@ class LoginController extends Controller {
         //otomasis langusng di redirect ke dashboard
         //session('key') bernilai 1
         session()->put('key', '1');
-        return view('dashboard');
+        if(Auth::User()->hasRole('user')){
+            return redirect('admin_dashboard');
+        } else {
+            return redirect('dashboard/user');
+      };
     }
 
     function logout()

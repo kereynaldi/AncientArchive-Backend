@@ -29,7 +29,8 @@ Route::get('login/logout', 'LoginController@logout')->name('logout'); //logout
 
 //DASHCONTROLLER ROUTES
 //semua ini bisa diakses jika session('key') sudah 1
-Route::get('/dashboard', 'DashController@index')->name('dashboard');
+Route::get('/dashboard/user', 'DashController@index')->name('user_dashboard');
+Route::get('/admin_dashboard', 'DashController@getAdmin')->name('admin_dashboard');
 Route::get('/document_approval', 'DashController@getApproval')->name('document_approval');
 Route::get('/document_archived', 'DashController@getArchived')->name('document_archived');
 Route::get('/recent_activity', 'DashController@getActivity')->name('recent_activity');
