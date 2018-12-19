@@ -12,7 +12,8 @@ class DashController extends Controller
   public function index()
   {
       if ( session('key') != null ){
-      return view('dashboard');
+      $datasurat_dash = Surat::all();
+      return view('dashboard', compact('datasurat_dash'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';
@@ -23,8 +24,8 @@ class DashController extends Controller
   public function getAdminApproval()
   {
     if ( (session('key') != null) && (Auth::User()->hasRole('admin')) ){
-        $surats = Surat::all();
-        return view('admin_document-approval', compact('surats'));
+        $datasurat_adminapproval = Surat::all();
+        return view('admin_document-approval', compact('datasurat_adminapproval'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';

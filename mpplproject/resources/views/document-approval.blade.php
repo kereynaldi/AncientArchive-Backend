@@ -59,7 +59,7 @@
                           <td>{{$surat->created_at->format('d-m-Y') }}</td>
                           <td><span class="label label-info">Fresh</span></td>
                           <td>
-                              <a href="{{ url('/status/update/' . $surat->id) }}">
+                              <a href="{{ url('/status/reviewed/' . $surat->id) }}">
                               <button type="button" class="btn btn-sm btn-warning btn-flat">Review</button>
                               </a>
                           </td>
@@ -113,7 +113,7 @@
                         <tr>
                           <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
                           <td>{{$surat->perihal}}</td>
-                          <td>{{$surat->created_at->format('d-m-Y') }}/td>
+                          <td>{{$surat->created_at->format('d-m-Y') }}</td>
                           <td><span class="label label-warning">Review</span></td>
                           <td>
                             <a href="{{ url('/status/cancel/' . $surat->id) }}">
@@ -207,6 +207,25 @@
                         <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
                       </td>
                     </tr>
+                    @if($surats->count() !== 0)
+                      @foreach($surats as $surat)
+                        @if($surat->Status == 2)
+                          <tr>
+                            <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
+                            <td>{{$surat->perihal}}</td>
+                            <td>{{$surat->created_at->format('d-m-Y') }}</td>
+                            <td><span class="label label-success">Approved</span></td>
+                            <td>
+                              <a href="{{ url('/status/archived/' . $surat->id) }}">
+                                <button type="button" class="btn btn-sm btn-primary btn-flat">Archive</button>
+                              </a>
+                            </td>
+                          </tr>
+                        @endif
+                      @endforeach
+                    @else
+                      <tr><td>Tidak ada surat masuk</td></tr>
+                    @endif
                   </tbody>
                 </table>
               </div>
@@ -245,49 +264,25 @@
                   </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0005</a></td>
-                      <td>Permohonan Pengajuan Ruang Seminar</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-danger">Declined</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0004</a></td>
-                      <td>Permohonan Pengajuan Dana PMW</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-danger">Declined</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0003</a></td>
-                      <td>Pengajuan Permintaan Kenaikan Pangkat</td>
-                      <td>02 December 2018</td>
-                      <td><span class="label label-danger">Declined</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0002</a></td>
-                      <td>Permohonan Pengajuan Kegiatan Workshop Bilibili</td>
-                      <td>23 November 2018</td>
-                      <td><span class="label label-danger">Declined</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0001</a></td>
-                      <td>Permohonan Pengajuan Cuti 3 Hari</td>
-                      <td>29 October 2018</td>
-                      <td><span class="label label-danger">Declined</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    </tr>
+                    @if($surats->count() !== 0)
+                      @foreach($surats as $surat)
+                        @if($surat->Status == 4)
+                          <tr>
+                            <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
+                            <td>{{$surat->perihal}}</td>
+                            <td>{{$surat->created_at->format('d-m-Y') }}</td>
+                            <td><span class="label label-danger">Declined</span></td>
+                            <td>
+                              <a href="{{ url('/status/archived/' . $surat->id) }}">
+                                <button type="button" class="btn btn-sm btn-primary btn-flat">Archive</button>
+                              </a>
+                            </td>
+                          </tr>
+                        @endif
+                      @endforeach
+                    @else
+                      <tr><td>Tidak ada surat masuk</td></tr>
+                    @endif
                   </tbody>
                 </table>
               </div>
