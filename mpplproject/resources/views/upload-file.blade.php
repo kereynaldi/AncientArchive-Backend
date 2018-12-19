@@ -70,57 +70,57 @@
                       <div class="form-group">
                         <h4>Mail Description Form</h4>
                         <label class="pull-left">No. Surat</label>
-                        <input type="text" name="no_surat" class="form-control" placeholder="Insert Subject ...">
+                        <input type="text" name="no_surat" class="form-control" placeholder="no. surat">
                       </div>
 
                       <div class="form-group">
                         <label class="pull-left">Asal Surat</label>
-                        <input type="text" name="asal_surat" class="form-control" placeholder="Surat dari ...">
+                        <input type="text" name="asal_surat" class="form-control" placeholder="asal surat">
                       </div>
 
                       <div class="form-group">
                         <label class="pull-left">Tujuan Surat</label>
-                        <input type="text" name="tujuan_surat" class="form-control" placeholder="Surat untuk ...">
+                        <input type="text" name="tujuan_surat" class="form-control" placeholder="tujuan surat">
                       </div>
 
                       <div class="form-group">
                         <label class="pull-left">Perihal Surat</label>
-                        <input type="text" name="perihal" class="form-control" placeholder="jenis surat ...">
+                        <input type="text" name="perihal" class="form-control" placeholder="perihal surat">
                       </div>
 
                       <div class="form-group">
                         <label class="pull-left">Jenis Surat</label>
-                        <textarea class="form-control" name="jenis_surat" rows="5" placeholder="Deskripsi Surat ..."></textarea>
+                        <input class="form-control" name="jenis_surat" rows="5" placeholder="jenis surat">
                       </div>
 
                        <div class="form-group">
                         <label class="pull-left">Tanggal Masuk Surat</label>
-                        <input type="text" name="tanggal_masuk" class="form-control" placeholder="Surat dari ...">
+                        <input type="text" name="tanggal_masuk" class="form-control" placeholder="tanggal masuk">
                       </div>
 
                        <div class="form-group">
                         <label class="pull-left">Tanggal Dibuat Surat</label>
-                        <input type="text" name="tanggal_dibuat" class="form-control" placeholder="Surat dari ...">
+                        <input type="text" name="tanggal_dibuat" class="form-control" placeholder="tanggal dibuat">
                       </div>
 
                        <div class="form-group">
                         <label class="pull-left">Deskripsi Surat</label>
-                        <input type="text" name="deskripsi" class="form-control" placeholder="Surat dari ...">
+                        <textarea type="text" name="deskripsi" class="form-control" placeholder="deskripsi surat"></textarea>
                       </div>
 
                        <div class="form-group">
                         <label class="pull-left">Nama Penerima Surat</label>
-                        <input type="text" name="nama_penerima" class="form-control" placeholder="Surat dari ...">
+                        <input type="text" name="nama_penerima" class="form-control" placeholder="nama penerima surat">
                       </div>
 
                        <div class="form-group">
                         <label class="pull-left">No. Telepon Penerima Surat</label>
-                        <input type="text" name="telfon_penerima" class="form-control" placeholder="Surat dari ...">
+                        <input type="number" name="telfon_penerima" class="form-control" placeholder="no. telepon penerima surat">
                       </div>
 
                        <div class="form-group">
                         <label class="pull-left">Email Penerima Surat</label>
-                        <input type="text" name="email_penerima" class="form-control" placeholder="Surat dari ...">
+                        <input type="email" name="email_penerima" class="form-control" placeholder="email penerima surat">
                       </div>
 
                       <br>

@@ -123,7 +123,7 @@
                 <label for="inputNotes" class="col-sm-2 control-label">Notes</label>
 
                 <div class="col-sm-10">
-                  <input type="textarea" name="notes" class="form-control" id="inputNotes" placeholder="Notes" value="{{Auth::User()->notes}}">
+                  <textarea type="text" name="notes" class="form-control" id="inputNotes" placeholder="Notes" value="{{Auth::User()->notes}}"></textarea>
                 </div>
               </div>
 
