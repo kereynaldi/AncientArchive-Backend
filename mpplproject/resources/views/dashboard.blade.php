@@ -20,14 +20,18 @@
       <!-- small box -->
       <div class="small-box bg-aqua">
         <div class="inner">
-          <h3>52</h3>
+          <h3>{{$jumlahsurat}}</h3>
 
           <p>Total Document</p>
         </div>
         <div class="icon">
           <i class="fa fa-briefcase"></i>
         </div>
+        @if(auth()->user()->hasRole('user'))
         <a href="{{ url('/document_approval') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        @elseif(auth()->user()->hasRole('admin'))
+        <a href="{{ url('/admin_document_approval') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        @endif
       </div>
     </div>
     <!-- ./col -->
@@ -35,14 +39,18 @@
       <!-- small box -->
       <div class="small-box bg-green">
         <div class="inner">
-          <h3>32</sup></h3>
+          <h3>{{$jumlahsuratapproved}}</sup></h3>
 
           <p>Document Approved</p>
         </div>
         <div class="icon">
           <i class="fa fa-thumbs-up"></i>
         </div>
+        @if(auth()->user()->hasRole('user'))
         <a href="{{ url('/document_approval') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        @elseif(auth()->user()->hasRole('admin'))
+        <a href="{{ url('/admin_document_approval') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        @endif
       </div>
     </div>
     <!-- ./col -->
@@ -50,14 +58,18 @@
       <!-- small box -->
       <div class="small-box bg-yellow">
         <div class="inner">
-          <h3>15</h3>
+          <h3>{{$jumlahsuratreview}}</h3>
 
           <p>Document Review</p>
         </div>
         <div class="icon">
           <i class="fa fa-book"></i>
         </div>
+        @if(auth()->user()->hasRole('user'))
         <a href="{{ url('/document_approval') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        @elseif(auth()->user()->hasRole('admin'))
+        <a href="{{ url('/admin_document_approval') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        @endif
       </div>
     </div>
     <!-- ./col -->
@@ -65,14 +77,18 @@
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">
-          <h3>5</h3>
+          <h3>{{$jumlahsuratdeclined}}</h3>
 
           <p>Document Declined</p>
         </div>
         <div class="icon">
           <i class="fa fa-thumbs-down"></i>
         </div>
+        @if(auth()->user()->hasRole('user'))
         <a href="{{ url('/document_approval') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        @elseif(auth()->user()->hasRole('admin'))
+        <a href="{{ url('/admin_document_approval') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        @endif
       </div>
     </div>
     <!-- ./col -->
@@ -170,7 +186,11 @@
     </div>
     <!-- /.box-body -->
     <div class="box-footer clearfix">
+      @if(auth()->user()->hasRole('user'))
       <a href="{{ url('/document_approval') }}" class="btn btn-sm btn-info btn-flat center-block">View All Document</a>
+      @elseif(auth()->user()->hasRole('admin'))
+      <a href="{{ url('/admin_document_approval') }}" class="btn btn-sm btn-info btn-flat center-block">View All Document</a>
+      @endif
     </div>
     <!-- /.box-footer -->
   </div>

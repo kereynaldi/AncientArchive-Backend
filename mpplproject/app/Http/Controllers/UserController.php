@@ -37,7 +37,7 @@ class UserController extends Controller
          'no_telp'       => $request->input('no_telp'),
          'education'     => $request->input('education'),
          'ruangan'       => $request->input('ruangan'),
-         'notes'       => $request->input('notes'),
+         'notes'         => $request->input('notes'),
      ]);
 
     return redirect()->back();

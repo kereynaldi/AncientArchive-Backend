@@ -2,8 +2,9 @@
 
 @section('content')
 
-<form action="#" method="POST" enctype="multipart/form-data" >
+<form action="{{ route('editsurat', $suratt->id) }}" method="POST">
     {{ csrf_field() }}
+    {{ method_field('PATCH') }}
     <div class="container">
       <div class="row">
       <div class="col-md-12">
@@ -71,26 +72,6 @@
             <input type="email" name="email_penerima" class="form-control" placeholder="email penerima surat" value="{{$suratt->email_penerima}}">
           </div>
 
-          <br>
-
-          <div class="form-group">
-            <h4>Uploader Description Form</h4>
-            <label class="pull-left">Nama Pengunggah Surat</label>
-            <input type="text" name="name" class="form-control" value="{{Auth::User()->name}}" placeholder="Insert Your Full Name Here ...">
-          </div>
-
-          <div class="form-group">
-            <label class="pull-left">No. Telepon Pengunggah Surat</label>
-            <input type="number" name="phone" class="form-control" value="{{Auth::User()->no_telp}}" placeholder="Insert your Phone Number Here ...">
-          </div>
-
-          <div class="form-group">
-            <label class="pull-left">Email Pengunggah Surat</label>
-            <input type="email" name="email" class="form-control" value="{{Auth::User()->email}}" placeholder="Insert your Email Here ...">
-          </div>
-
-          <br>
-
           <!-- Document Description Form End -->
 
         </div>
@@ -100,7 +81,7 @@
       </div>
       <div class="row">
       <div class="col-md-12">
-        <button type="submit" class="btn btn-primary center-block">Upload</button>
+        <button type="submit" class="btn btn-primary center-block">Update</button>
       </div>
       </div>
     </div>

@@ -29,21 +29,21 @@ class SuratController extends Controller
         $image  = $request->file('image')->store('gambar');
 
         Surat::create([
-          'image' => $image,
-          'no_surat' => $request->no_surat,
-          'asal_surat' => $request->asal_surat,
-          'tujuan_surat' => $request->tujuan_surat,
-          'perihal' => $request->perihal,
-          'jenis_surat' => $request->jenis_surat,
-          'tanggal_masuk' => $request->tanggal_masuk,
-          'tanggal_dibuat' => $request->tanggal_dibuat,
-          'deskripsi' => $request->deskripsi,
-          'nama_penerima' => $request->nama_penerima,
+          'image'           => $image,
+          'no_surat'        => $request->no_surat,
+          'asal_surat'      => $request->asal_surat,
+          'tujuan_surat'    => $request->tujuan_surat,
+          'perihal'         => $request->perihal,
+          'jenis_surat'     => $request->jenis_surat,
+          'tanggal_masuk'   => $request->tanggal_masuk,
+          'tanggal_dibuat'  => $request->tanggal_dibuat,
+          'deskripsi'       => $request->deskripsi,
+          'nama_penerima'   => $request->nama_penerima,
           'telfon_penerima' => $request->telfon_penerima,
-          'email_penerima' => $request->email_penerima,
-          'Status' => NULL,
+          'email_penerima'  => $request->email_penerima,
+          'Status'          => NULL,
           'archived_status' => 1,
-          'idpenerima' => $user->id,
+          'idpenerima'      => $user->id,
       ]);
       //redirect home
         return redirect()->route('document_approval');
@@ -75,6 +75,28 @@ class SuratController extends Controller
         }
     }
 
+    public function editSurat(Request $request, $id)
+    {
+      //Authenticate surat yang sedang diedit
+      $surat = Surat::find($id);
+      //Update
+      $surat->update([
+          'no_surat'        => $request->input('no_surat'),
+          'asal_surat'      => $request->input('asal_surat'),
+          'tujuan_surat'    => $request->input('tujuan_surat'),
+          'perihal'         => $request->input('perihal'),
+          'jenis_surat'     => $request->input('jenis_surat'),
+          'tanggal_masuk'   => $request->input('tanggal_masuk'),
+          'tanggal_dibuat'  => $request->input('tanggal_dibuat'),
+          'deskripsi'       => $request->input('deskripsi'),
+          'nama_penerima'   => $request->input('nama_penerima'),
+          'telfon_penerima' => $request->input('telfon_penerima'),
+          'email_penerima'  => $request->input('email_penerima'),
+       ]);
+
+      return redirect('/document_detail/' . $id);
+    }
+
     public function reviewedStatus($id)
     {
         if ( session('key') != null ){
@@ -93,9 +115,18 @@ class SuratController extends Controller
 
     public function cancelStatus($id)
     {
+        $user = Auth::User();
         if ( session('key') != null ){
           $datasurat_cancel = Surat::find($id);
-          $datasurat_cancel->Status = NULL;
+
+          //kondisi untuk membedakan pergantian status berdasarkan ROLE
+          if($user->hasRole('user')) {
+            $datasurat_cancel->Status = NULL;
+          }
+          elseif($user->hasRole('admin')) {
+            $datasurat_cancel->Status = 1;
+          }
+
           $datasurat_cancel->save();
 
           return redirect()->back();

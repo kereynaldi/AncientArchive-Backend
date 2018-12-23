@@ -50,8 +50,9 @@
                   </tr>
                   </thead>
                   <tbody>
-                    @if($datasurat_adminapproval->count() !== 0)
+                    @if($jumlahsuratfresh !== 0)
                       @foreach($datasurat_adminapproval as $surat)
+                      <!-- kondisi if untuk menentukan surat yang statusnya fresh dan not archived -->
                         @if($surat->Status == NULL && $surat->archived_status == 1)
                           <tr>
                             <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
@@ -106,8 +107,9 @@
                   </tr>
                   </thead>
                   <tbody>
-                    @if($datasurat_adminapproval->count() !== 0)
+                    @if($jumlahsuratreview !== 0)
                       @foreach($datasurat_adminapproval as $surat)
+                      <!-- kondisi if untuk menentukan surat yang statusnya review dan not archived -->
                         @if($surat->Status == 1 && $surat->archived_status == 1)
                           <tr>
                             <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
@@ -167,8 +169,9 @@
                   </tr>
                   </thead>
                   <tbody>
-                    @if($datasurat_adminapproval->count() !== 0)
+                    @if($jumlahsuratapproved !== 0)
                       @foreach($datasurat_adminapproval as $surat)
+                      <!-- kondisi if untuk menentukan surat yang statusnya approved dan not archived -->
                         @if($surat->Status == 2 && $surat->archived_status == 1)
                           <tr>
                             <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
@@ -178,6 +181,9 @@
                             <td>
                                 <a href="{{ url('/status/archived/' . $surat->id) }}">
                                   <button type="button" class="btn btn-sm btn-primary btn-flat">Archive</button>
+                                </a>
+                                <a href="{{ url('/status/cancel/' . $surat->id) }}">
+                                  <button type="button" class="btn btn-sm btn-danger btn-flat">Cancel</button>
                                 </a>
                             </td>
                           </tr>
@@ -224,8 +230,9 @@
                   </tr>
                   </thead>
                   <tbody>
-                    @if($datasurat_adminapproval->count() !== 0)
+                    @if($jumlahsuratdeclined !== 0)
                       @foreach($datasurat_adminapproval as $surat)
+                      <!-- kondisi if untuk menentukan surat yang statusnya declined dan not archived -->
                         @if($surat->Status == 4 && $surat->archived_status == 1)
                           <tr>
                             <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
@@ -235,6 +242,9 @@
                             <td>
                                 <a href="{{ url('/status/archived/' . $surat->id) }}">
                                   <button type="button" class="btn btn-sm btn-primary btn-flat">Archive</button>
+                                </a>
+                                <a href="{{ url('/status/cancel/' . $surat->id) }}">
+                                  <button type="button" class="btn btn-sm btn-danger btn-flat">Cancel</button>
                                 </a>
                             </td>
                           </tr>

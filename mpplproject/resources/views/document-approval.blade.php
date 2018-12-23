@@ -50,8 +50,11 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @if($surats->count() !== 0)
+                  <!-- kondisi jika surast tidak ada di database -->
+                  @if($jumlahsuratfresh !== 0)
+                    <!-- foreach untuk memanggil seluruh surat yang ada di database dan looping -->
                     @foreach($surats as $surat)
+                      <!-- kondisi if untuk menentukan surat yang statusnya fresh dan not archived -->
                       @if($surat->Status == NULL && $surat->archived_status == 1)
                         <tr>
                           <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
@@ -107,8 +110,9 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @if($surats->count() !== 0)
+                  @if($jumlahsuratreview !== 0)
                     @foreach($surats as $surat)
+                    <!-- kondisi if untuk menentukan surat yang statusnya review dan not archived -->
                       @if($surat->Status == 1 && $surat->archived_status == 1)
                         <tr>
                           <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
@@ -118,7 +122,7 @@
                           <td>
                             <a href="{{ url('/status/cancel/' . $surat->id) }}">
                             <button type="button" class="btn btn-sm btn-danger btn-flat">Cancel</button>
-                          </a>
+                            </a>
                           </td>
                         </tr>
                       @endif
@@ -155,60 +159,18 @@
               <div class="table-responsive">
                 <table id="example3" class="table no-margin">
                   <thead>
-                  <tr>
-                    <th>Document ID</th>
-                    <th>Document Name</th>
-                    <th>Approved Date</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
+                    <tr>
+                      <th>Document ID</th>
+                      <th>Document Name</th>
+                      <th>Review Date</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0005</a></td>
-                      <td>Permohonan Pengajuan Ruang Seminar</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-success">Approved</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archive</button>
-                      </td>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0004</a></td>
-                      <td>Permohonan Pengajuan Dana PMW</td>
-                      <td>12 December 2018</td>
-                      <td><span class="label label-success">Approved</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0003</a></td>
-                      <td>Pengajuan Permintaan Kenaikan Pangkat</td>
-                      <td>02 December 2018</td>
-                      <td><span class="label label-success">Approved</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0002</a></td>
-                      <td>Permohonan Pengajuan Kegiatan Workshop Bilibili</td>
-                      <td>23 November 2018</td>
-                      <td><span class="label label-success">Approved</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    <tr>
-                      <td><a href="../document-detail/document-detail.html">DA0001</a></td>
-                      <td>Permohonan Pengajuan Cuti 3 Hari</td>
-                      <td>29 October 2018</td>
-                      <td><span class="label label-success">Approved</span></td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-primary">Archieve</button>
-                      </td>
-                    </tr>
-                    @if($surats->count() !== 0)
+                    @if($jumlahsuratapproved !== 0)
                       @foreach($surats as $surat)
+                      <!-- kondisi if untuk menentukan surat yang statusnya approved dan not archived -->
                         @if($surat->Status == 2 && $surat->archived_status == 1)
                           <tr>
                             <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>
@@ -264,8 +226,9 @@
                   </tr>
                   </thead>
                   <tbody>
-                    @if($surats->count() !== 0)
+                    @if($jumlahsuratdeclined !== 0)
                       @foreach($surats as $surat)
+                      <!-- kondisi if untuk menentukan surat yang statusnya declined dan not archived -->
                         @if($surat->Status == 4 && $surat->archived_status == 1)
                           <tr>
                             <td><a href="{{ url('/document_detail/'. $surat->id) }}">{{$surat->id}}</a></td>

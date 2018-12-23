@@ -13,6 +13,40 @@
   </ol>
 </section>
 
+<section class="invoice">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="page-header">
+          <i class="fa fa-file-text"></i> Image
+        </h2>
+      </div>
+      <!-- /.col -->
+    </div>
+
+
+    <!-- PDF Preview Start -->
+    <script>
+    function PreviewImage2() {
+
+        pdffile_url="{{ asset('storage/' . $suratt->image) }}";
+        $('#viewer').attr('src',pdffile_url);
+    }
+    </script>
+
+
+    <!-- <script src="{{ asset('beranda/pdf.js') }}"></script> -->
+    <!-- <input class="btn btn-primary center-block" name="image" type="button" value="Preview" onclick="PreviewImage2();" />
+    <br>
+
+    <div style="clear:both">
+      <iframe target="_blank" id="viewer" frameborder="0" scrolling="no" width="100%" height="500"></iframe>
+    </div> -->
+    <!-- <embed src="{{ asset('storage/' . $suratt->image) }}" type="application/pdf"   height="700px" width="500px"> -->
+
+
+</section>
+
 <!-- Main content -->
 <section class="invoice">
 
@@ -92,7 +126,12 @@
   <!-- Download & Download Button -->
   <div class="row no-print">
     <div class="col-xs-12">
+    <!-- untuk kondisi memunculkan button edit -->
+    @if(auth()->user()->hasRole('user') && $suratt->Status == NULL || $suratt->Status == 1)
     <a href="{{ url('document_detail/edit/' .$suratt->id) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
+    @elseif(auth()->user()->hasRole('admin'))
+    <a href="{{ url('document_detail/edit/' .$suratt->id) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
+    @endif
       <a href="#" target="_blank" class="btn btn-success pull-right"><i class="fa fa-download"></i> Download</a>
     </div>
   </div>

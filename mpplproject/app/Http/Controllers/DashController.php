@@ -13,7 +13,12 @@ class DashController extends Controller
   {
       if ( session('key') != null ){
       $datasurat_dash = Surat::all();
-      return view('dashboard', compact('datasurat_dash'));
+      $jumlahsurat = $datasurat_dash->count();
+      $jumlahsuratfresh = $datasurat_dash->where('Status', NULL)->count();
+      $jumlahsuratreview = $datasurat_dash->where('Status', 1)->count();
+      $jumlahsuratapproved = $datasurat_dash->where('Status', 2)->count();
+      $jumlahsuratdeclined = $datasurat_dash->where('Status', 4)->count();
+      return view('dashboard', compact('datasurat_dash', 'jumlahsurat','jumlahsuratfresh', 'jumlahsuratreview', 'jumlahsuratapproved', 'jumlahsuratdeclined'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';
@@ -25,7 +30,11 @@ class DashController extends Controller
   {
     if ( (session('key') != null) && (Auth::User()->hasRole('admin')) ){
         $datasurat_adminapproval = Surat::all();
-        return view('admin_document-approval', compact('datasurat_adminapproval'));
+        $jumlahsuratfresh = $datasurat_adminapproval->where('Status', NULL)->count();
+        $jumlahsuratreview = $datasurat_adminapproval->where('Status', 1)->count();
+        $jumlahsuratapproved = $datasurat_adminapproval->where('Status', 2)->count();
+        $jumlahsuratdeclined = $datasurat_adminapproval->where('Status', 4)->count();
+        return view('admin_document-approval', compact('datasurat_adminapproval', 'jumlahsuratfresh', 'jumlahsuratreview', 'jumlahsuratapproved', 'jumlahsuratdeclined'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';
@@ -57,7 +66,11 @@ class DashController extends Controller
       if ( session('key') != null ){
         //untuk nyambungin ke database surat
         $surats = Surat::all();
-        return view('document-approval', compact('surats'));
+        $jumlahsuratfresh = $surats->where('Status', NULL)->count();
+        $jumlahsuratreview = $surats->where('Status', 1)->count();
+        $jumlahsuratapproved = $surats->where('Status', 2)->count();
+        $jumlahsuratdeclined = $surats->where('Status', 4)->count();
+        return view('document-approval', compact('surats', 'jumlahsuratfresh', 'jumlahsuratreview', 'jumlahsuratapproved', 'jumlahsuratdeclined'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';
@@ -69,7 +82,8 @@ class DashController extends Controller
   {
       if ( session('key') != null ){
         $datasurat_getarchived = Surat::all();
-        return view('document-archived', compact('datasurat_getarchived'));
+        $jumlahsuratarchived = $datasurat_getarchived->where('archived_status', 2)->count();
+        return view('document-archived', compact('datasurat_getarchived', 'jumlahsuratarchived'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';

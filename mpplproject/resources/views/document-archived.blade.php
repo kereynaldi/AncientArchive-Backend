@@ -46,7 +46,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                    @if($datasurat_getarchived->count() !== 0)
+                    @if($jumlahsuratarchived !== 0)
                       @foreach($datasurat_getarchived as $surat)
                         @if($surat->Status == NULL && $surat->archived_status == 2)
                           <tr>
