@@ -50,7 +50,7 @@
 </head>
 
 <?php if (Auth::User()->hasRole('admin')) : ?>
-            
+
             <body class="hold-transition skin-red sidebar-mini">
 
               <!-- <div class="se-pre-con"></div> -->

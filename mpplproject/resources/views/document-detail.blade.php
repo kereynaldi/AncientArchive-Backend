@@ -26,24 +26,10 @@
 
 
     <!-- PDF Preview Start -->
-    <script>
-    function PreviewImage2() {
+    <!-- <iframe src="{{ asset('storage/' . $suratt->image) }}" height="100%" width="100%"> </iframe> -->
+    <!-- <object data="{{ asset('storage/' . $suratt->image) }}" type="pdf/html" width="350" height="250"> </object> -->
 
-        pdffile_url="{{ asset('storage/' . $suratt->image) }}";
-        $('#viewer').attr('src',pdffile_url);
-    }
-    </script>
-
-
-    <!-- <script src="{{ asset('beranda/pdf.js') }}"></script> -->
-    <!-- <input class="btn btn-primary center-block" name="image" type="button" value="Preview" onclick="PreviewImage2();" />
-    <br>
-
-    <div style="clear:both">
-      <iframe target="_blank" id="viewer" frameborder="0" scrolling="no" width="100%" height="500"></iframe>
-    </div> -->
-    <!-- <embed src="{{ asset('storage/' . $suratt->image) }}" type="application/pdf"   height="700px" width="500px"> -->
-
+    <embed src="{{ asset('storage/' . $suratt->image) }}" type="application/pdf"   height="700px" width="500px">
 
 </section>
 
