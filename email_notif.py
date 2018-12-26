@@ -44,7 +44,7 @@ while(True):
 
     if len(daftar_dokumen) > now:
         for dokumen in daftar_dokumen:
-            if int(dokumen) == 1:
+            if int(dokumen) <= now:
                 break
             nama_penerima = daftar_dokumen[dokumen]['nama_penerima']
             #email_penerima = daftar_dokumen[dokumen]['email_penerima']
