@@ -26,7 +26,7 @@
     <div class="box-body">
       <ul class="products-list product-list-in-box">
 
-        <li class="item">
+        <!-- <li class="item">
           <div class="product-img">
             <img src="{{ asset('beranda/dist/img/kevin.jpg') }}" class="img-circle" alt="Product Image">
           </div>
@@ -37,22 +37,50 @@
                   Changed Document Status from <b>Fresh</b> to <b>Review</b>
                 </span>
           </div>
-        </li>
+        </li> -->
 
         @if($surats->count() !== 0)
           @foreach($surats as $surat)
+            <?php 
+            $id = $surat->idpenerima;
+            $acts = DB::table('activities')->where('id_user_act','=', $id)->value('avatar'); ?>
+            
             <li class="item">
               <div class="product-img">
-                <img src="{{ asset('beranda/dist/img/kevin.jpg') }}" class="img-circle" alt="Product Image">
+                <img src="{{ asset('storage/' . $acts) }}" class="img-circle" alt="Product Image">
               </div>
               <div class="product-info">
                 <a href="javascript:void(0)" class="product-title">{{$surat->perihal}}
-                    <span class="label label-warning pull-right">{{$surat->status}}</span></a>
+                    
+                    @if(($surat->status) == NULL)
+                    <span class="label label-primary pull-right">Fresh</span></a>
                     <span class="product-description">
-                      Changed Document Status from <b>Fresh</b> to <b>{{$surat->status}}</b>
+                    There is a new <b>Fresh</b> Letter
                     </span>
+
+                    @elseif(($surat->status) == 1)
+                    <span class="label label-warning pull-right">Fresh</span></a>
+                    <span class="product-description">
+                    Changed Document Status from <b>Fresh</b> to <b>Review</b>
+                    </span>
+
+                    @elseif(($surat->status) == 2)
+                    <span class="label label-success pull-right">Fresh</span></a>
+                    <span class="product-description">
+                    Changed Document Status from <b>Review</b> to <b>Approved</b>
+                    </span>
+
+                    @elseif(($surat->status) == 4)
+                    <span class="label label-danger pull-right">Fresh</span></a>
+                    <span class="product-description">
+                    Changed Document Status from <b>Fresh</b> to <b>Declined</b>
+                    </span>
+
+                    @endif
+
               </div>
             </li>
+
           @endforeach
         @else
             <tr><td>Tidak ada surat masuk</td></tr>

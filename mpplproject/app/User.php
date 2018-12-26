@@ -39,4 +39,9 @@ class User extends Authenticatable
     public function DaftarSurat() {
         return $this->hasMany('App\Surat', 'idpenerima', 'id');
     }
+
+    public function activity_user()
+    {
+          return $this->hasMany('App\Activity', 'id_user_act', 'id');
+    }
 }

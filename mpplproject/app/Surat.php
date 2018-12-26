@@ -25,4 +25,9 @@ class Surat extends Model
         return $this->belongsTo('App\User', 'idpenerima');
     }
 
+  public function activity_surat()
+    {
+          return $this->hasMany('App\Activity', 'id_surat_act', 'id');
+    }
+
 }

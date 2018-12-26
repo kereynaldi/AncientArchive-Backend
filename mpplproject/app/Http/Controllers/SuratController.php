@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 
 use App\Surat;
 use App\User;
+use App\Activity;
+use DB;
 
 class SuratController extends Controller
 {
     public function uploadSurat(Request $request)
     {
         $user = Auth::User();
+        $avatar = DB::table('users')
+        ->where('id','=', $user->id)->value('avatar');
+         
         // //validate Surat
         // $this->validate($request, [
         //   'image' => 'required',
@@ -44,6 +49,16 @@ class SuratController extends Controller
           'Status'          => NULL,
           'archived_status' => 1,
           'idpenerima'      => $user->id,
+      ]);
+
+        Activity::create([
+          'avatar'          => $avatar,
+          'perihal'         => $request->perihal,
+          'status'          => NULL,
+          'archive_stat'    => 1,
+          'id_user_act'     => $user->id,
+          //'id_surat_act'    => $surat->id,
+
       ]);
       //redirect home
         return redirect()->route('document_approval');
