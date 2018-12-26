@@ -107,7 +107,7 @@
                     <th>Action</th>
                   </tr>
                   </thead>
-                  @if($datasurat_getarchived->count() !== 0)
+                  @if($jumlahsuratarchived !== 0)
                     @foreach($datasurat_getarchived as $surat)
                       @if($surat->Status == 2 && $surat->archived_status == 2)
                         <tr>
@@ -160,7 +160,15 @@
               <div class="table-responsive">
                 <table id="example3"  class="table no-margin">
                   <thead>
-                    @if($datasurat_getarchived->count() !== 0)
+                    <tr>
+                      <th>Document ID</th>
+                      <th>Document Name</th>
+                      <th>Archieved Date</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                    @if($jumlahsuratarchived !== 0)
                       @foreach($datasurat_getarchived as $surat)
                         @if($surat->Status == 4 && $surat->archived_status == 2)
                           <tr>

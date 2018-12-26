@@ -27,7 +27,7 @@ $(function () {
         pointStrokeColor    : 'rgba(0,192,239,1)',
         pointHighlightFill  : '#fff',
         pointHighlightStroke: 'rgba(0,192,239,1)',
-        data                : [17, 21, 14]
+        data                : [17, 50, 14]
       },
       {
         label               : 'Document Approved',
@@ -49,7 +49,7 @@ $(function () {
         pointHighlightStroke: 'rgba(243,156,18,1)',
         data                : [3, 8, 4]
       },
-      {  
+      {
         label               : 'Document Declined',
         fillColor           : 'rgba(221,75,57,0.8)',
         strokeColor         : 'rgba(221,75,57,0.5)',
