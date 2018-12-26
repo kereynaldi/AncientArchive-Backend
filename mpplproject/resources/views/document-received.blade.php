@@ -6,6 +6,8 @@
 "email_penerima":"{{$surat->email_penerima }}",
 "deskripsi":"{{$surat->deskripsi }}",
 "asal_surat":"{{$surat->asal_surat }}",
+"telepon_penerima":"{{$surat->telfon_penerima }}",
+"tanggal_masuk":"{{$surat->tanggal_masuk }}",
 "tujuan_surat":"{{$surat->tujuan_surat }}"}@if ($surat->id != 1),@endif
 @endforeach
 }
