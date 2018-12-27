@@ -28,7 +28,7 @@
         <meta name="mobile-web-app-capable" content="yes">
 
         <title>
-            Login|Ancient Archieve
+            Login|Ancient Archive
         </title>
 
         <!-- Website Theme -->
@@ -40,7 +40,7 @@
         <div class="se-pre-con"></div>
 
         <div class="container-head">
-            <h1><a href="{{ url('/') }}">Ancient Archieve Project</a></h1>
+            <h1><a href="{{ url('/') }}">Ancient Archive Project</a></h1>
         </div>
 
         <div class="container-body">
@@ -69,7 +69,7 @@
 
             </div>
 
-            <h1>Ancient <br> Archieve.</h1>
+            <h1>Ancient <br> Archive.</h1>
             <p>Make Your Archieve More Secure!</p>
         </div>
 

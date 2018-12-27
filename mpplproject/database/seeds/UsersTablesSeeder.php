@@ -14,26 +14,26 @@ class UsersTablesSeeder extends Seeder
     public function run()
     {
       $user = User::create([
-        'NIP' => '00000001',
-        'name' => 'Monkey D. Garp',
-        'email' => 'garp@gmail.com',
+        'NIP' => '198503302003121002',
+        'name' => 'Adi Rizka',
+        'email' => 'r.adi@gmail.com',
         'password' => Hash::make('godblessindonesia'),
-        'jabatan' => 'Vice Admiral',
+        'jabatan' => 'Ketua Harian',
         'no_telp' => '08121223778',
       ]);
       $user->assignRole('admin');
       $user->save();
 
-      $user = User::create([
-        'NIP' => '00000002',
-        'name' => 'Monkey D. Luffy',
-        'email' => 'luffy@gmail.com',
-        'password' => Hash::make('godblessindonesia'),
-        'jabatan' => 'Captain',
-        'no_telp' => '08121223778',
-      ]);
-      $user->assignRole('user');
-      $user->save();
+      // $user = User::create([
+      //   'NIP' => '00000002',
+      //   'name' => 'Monkey D. Luffy',
+      //   'email' => 'luffy@gmail.com',
+      //   'password' => Hash::make('godblessindonesia'),
+      //   'jabatan' => 'Captain',
+      //   'no_telp' => '08121223778',
+      // ]);
+      // $user->assignRole('user');
+      // $user->save();
 
 
     }
