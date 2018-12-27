@@ -13,7 +13,6 @@
 #  under the License.
 
 from __future__ import unicode_literals
-from competition import *
 
 import ast
 import redis
@@ -62,56 +61,12 @@ def callback():
       continue
 
     if event.message.text.lower() == 'minta id':
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.source.user_id)
-        )
-"""
-    if event.message.text.lower() == 'help':
-        line_bot_api.reply_message(
-          event.reply_token,
-          TextSendMessage(text='Type \'Follow\' if you want Compe-Bot to notify contests\n\nType \'Unfollow\' if you want to stop receiving contests notifications')
-        )
-    
-    if event.message.text.lower() == 'follow':
-      list_adders = redis_db.hgetall('push_notif')
-      print(list_adders[b'users_id'])
-      if b'users_id' not in list_adders or list_adders[b'users_id'].decode() == 'set()':
-        list_adders[b'users_id'] = []
-      else:
-        list_adders[b'users_id'] = list(ast.literal_eval(list_adders[b'users_id'].decode()))
-      list_adders[b'users_id'].append(event.source.user_id if event.source.type == 'user' else event.source.group_id)
-      list_adders[b'users_id'] = str(set(list_adders[b'users_id']))
-      redis_db.hmset('push_notif', list_adders)
       line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text='Followed !')
+        TextSendMessage(text=event.source.user_id)
       )
-
-    if event.message.text.lower() == 'unfollow':
-      list_adders = redis_db.hgetall('push_notif')
-      if (event.source.user_id if event.source.type == 'user' else event.source.group_id) not in list_adders[b'users_id'].decode():
-        line_bot_api.reply_message(
-          event.reply_token,
-          TextSendMessage(text='You are not registered for notification yet !')
-        )
-      else:
-        list_adders[b'users_id'] = ast.literal_eval(list_adders[b'users_id'].decode())
-        list_adders[b'users_id'].remove(event.source.user_id if event.source.type == 'user' else event.source.group_id)
-        list_adders[b'users_id'] = str(list_adders[b'users_id'])
-        redis_db.hmset('push_notif', list_adders)
-        line_bot_api.reply_message(
-          event.reply_token,
-          TextSendMessage(text='Unfollowed !')
-        )
-    if event.message.text.lower() == 'contest':
-      line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=notify())
-      )
-"""
-  return 'OK'
+    return 'OK'
 
 
 if __name__ == "__main__":
-  app.run(host = '0.0.0.0', debug=True, port='5002')
+    app.run(host = '0.0.0.0', debug=True, port='5002')
