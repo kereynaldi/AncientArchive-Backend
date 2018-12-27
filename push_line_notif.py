@@ -15,6 +15,16 @@ while True:
   for doc in list_doc:
     if int(doc) <= now:
       break
-    line_bot_api.push_message(list_doc[doc]['line_id'], TextSendMessage(text=contest_list))
+    dokumen = list_doc[doc]
+    line_bot_api.push_message(
+      #list_doc[doc]['line_id'],
+      'U1d3d45c1ed66bbfb10eca3cfc85d45c2', 
+      TextSendMessage(text=('[Ancient Archive Notification]\n\n' 
+        + dokumen['perihal'] + '\n'
+        + dokumen['created_at'] + '\n'
+        + dokumen['jenis_surat'] + '\n'
+        + dokumen['asal_surat'] + '\n'
+        + dokumen['tujuan_surat']))
+    )
   now = len(list_doc)
   time.sleep(10)
