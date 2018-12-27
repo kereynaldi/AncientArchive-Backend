@@ -16,19 +16,10 @@ class SuratController extends Controller
         $user = Auth::User();
         $avatar = DB::table('users')
         ->where('id','=', $user->id)->value('avatar');
-         
-        // //validate Surat
-        // $this->validate($request, [
-        //   'image' => 'required',
-        //   'subject' => 'required',
-        //   'from' => 'required',
-        //   'to' => 'required',
-        //   'jenissurat' => 'required',
-        //   'deskripsisurat' => 'required',
-        //   'name' => 'required',
-        //   'email' => 'required',
-        //   'phone' => 'required',
-        // ]);
+        $stat = DB::table('surats')
+        ->where('idpenerima','=', $user->id)->value('Status');
+
+        
 
         //upload gambar
         $image  = $request->file('image')->store('gambar');
@@ -51,13 +42,16 @@ class SuratController extends Controller
           'idpenerima'      => $user->id,
       ]);
 
+        $id_surat = DB::table('surats')
+        ->where('idpenerima','=', $user->id)->value('id');
+
         Activity::create([
           'avatar'          => $avatar,
           'perihal'         => $request->perihal,
-          'status'          => NULL,
+          'status'          => $stat,
           'archive_stat'    => 1,
           'id_user_act'     => $user->id,
-          //'id_surat_act'    => $surat->id,
+          'id_surat_act'    => $id_surat,
 
       ]);
       //redirect home
@@ -119,6 +113,25 @@ class SuratController extends Controller
           $datasurat_reviewed->Status = 1;
           $datasurat_reviewed->save();
 
+          $user = Auth::User();
+          $avatar = DB::table('users')
+          ->where('id','=', $user->id)->value('avatar');
+          $stat = DB::table('surats')
+          ->where('idpenerima','=', $user->id)->value('Status');
+          $hal = DB::table('surats')
+          ->where('idpenerima','=', $user->id)->value('perihal');
+          $id_surat = DB::table('surats')
+          ->where('idpenerima','=', $user->id)->value('id');
+
+          Activity::create([
+          'avatar'          => $avatar,
+          'perihal'         => $hal,
+          'status'          => $stat,
+          'archive_stat'    => 1,
+          'id_user_act'     => $user->id,
+          'id_surat_act'    => $id_surat,
+      ]);
+
           return redirect()->back();
         } else {
             echo "<script type='text/javascript'>alert('Please login first to see this page!');
@@ -137,12 +150,32 @@ class SuratController extends Controller
           //kondisi untuk membedakan pergantian status berdasarkan ROLE
           if($user->hasRole('user')) {
             $datasurat_cancel->Status = NULL;
+
           }
           elseif($user->hasRole('admin')) {
             $datasurat_cancel->Status = 1;
           }
 
           $datasurat_cancel->save();
+
+          $user = Auth::User();
+          $avatar = DB::table('users')
+          ->where('id','=', $user->id)->value('avatar');
+          $stat = DB::table('surats')
+          ->where('idpenerima','=', $user->id)->value('Status');
+          $hal = DB::table('surats')
+          ->where('idpenerima','=', $user->id)->value('perihal');
+          $id_surat = DB::table('surats')
+          ->where('idpenerima','=', $user->id)->value('id');
+
+          Activity::create([
+          'avatar'          => $avatar,
+          'perihal'         => $hal,
+          'status'          => $stat,
+          'archive_stat'    => 1,
+          'id_user_act'     => $user->id,
+          'id_surat_act'    => $id_surat,
+      ]);
 
           return redirect()->back();
         } else {
@@ -159,6 +192,26 @@ class SuratController extends Controller
           $datasurat_approve = Surat::find($id);
           $datasurat_approve->Status = 2;
           $datasurat_approve->save();
+
+          $activity = DB::table('activities')->value('id_surat_act');
+          $user = Auth::User();
+          $avatar = DB::table('users')
+          ->where('id','=', $user->id)->value('avatar');
+          $stat = DB::table('surats')
+          ->where('id','=', $activity)->value('Status');
+          $hal = DB::table('surats')
+          ->where('id','=', $activity)->value('perihal');
+          $id_surat = DB::table('surats')
+          ->where('id','=', $activity)->value('id');
+
+          Activity::create([
+          'avatar'          => $avatar,
+          'perihal'         => $hal,
+          'status'          => $stat,
+          'archive_stat'    => 1,
+          'id_user_act'     => $user->id,
+          'id_surat_act'    => $id_surat,
+      ]);
 
           return redirect()->back();
         } else {
@@ -191,6 +244,26 @@ class SuratController extends Controller
           $datasurat_declined = Surat::find($id);
           $datasurat_declined->Status = 4;
           $datasurat_declined->save();
+
+          $activity = DB::table('activities')->value('id_surat_act');
+          $user = Auth::User();
+          $avatar = DB::table('users')
+          ->where('id','=', $user->id)->value('avatar');
+          $stat = DB::table('surats')
+          ->where('id','=', $activity)->value('Status');
+          $hal = DB::table('surats')
+          ->where('id','=', $activity)->value('perihal');
+          $id_surat = DB::table('surats')
+          ->where('id','=', $activity)->value('id');
+
+          Activity::create([
+          'avatar'          => $avatar,
+          'perihal'         => $hal,
+          'status'          => $stat,
+          'archive_stat'    => 1,
+          'id_user_act'     => $user->id,
+          'id_surat_act'    => $id_surat,
+      ]);
 
           return redirect()->back();
         } else {

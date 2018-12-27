@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Surat;
+use App\Activity;
 
 class DashController extends Controller
 {
@@ -94,8 +95,8 @@ class DashController extends Controller
   public function getActivity()
   {
       if ( session('key') != null ){
-      $surats = Surat::all();
-      return view('recent-activity', compact('surats'));
+      $activities = Activity::all();
+      return view('recent-activity', compact('activities'));
       } else {
           echo "<script type='text/javascript'>alert('Please login first to see this page!');
               window.location = '/login';

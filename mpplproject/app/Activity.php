@@ -20,7 +20,7 @@ class Activity extends Model
     protected $table = 'activities';
     protected $primaryKey = 'id';
     protected $fillable = [
-         'avatar', 'perihal', 'status', 'archive_stat', 'id_user_act',
+         'avatar', 'perihal', 'status', 'archive_stat', 'id_user_act', 'id_surat_act',
     ];
 
     public function user_list()

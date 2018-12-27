@@ -38,7 +38,7 @@
                   <div>
                       <label for="NIP" ><b>NIP</b></label>
                       <br>
-                      <input name="NIP" type="text">
+                      <input name="NIP" type="text" autofocus>
 
                       <label for="name" ><b>Nama Lengkap</b></label>
                       <br>
